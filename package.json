@@ -1,0 +1,30 @@
+{
+  "name": "yishu",
+  "version": "1.0.0",
+  "description": "Personal Design System because it's yìshù, meaning art",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@storybook/html": "^5.1.9",
+    "babel-loader": "^8.0.6",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-jsdoc": "^15.3.4",
+    "eslint-plugin-json": "^1.4.0",
+    "husky": "^3.0.0",
+    "lint-staged": "^9.2.0",
+    "prettier": "^1.18.2",
+    "prettier-eslint": "^9.0.0",
+    "prettier-eslint-cli": "^5.0.0"
+  },
+  "scripts": {
+    "start": "start-storybook -p 6006 -c .storybook",
+    "format": "prettier --write \"src/**/*.+(js|css|json)\""
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  }
+}
