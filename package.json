@@ -7,7 +7,9 @@
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
-    "@storybook/html": "^5.1.9",
+    "@storybook/react": "^5.3.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
     "babel-loader": "^8.0.6",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-jsdoc": "^15.3.4",
@@ -19,12 +21,16 @@
     "prettier-eslint-cli": "^5.0.0"
   },
   "scripts": {
-    "start": "start-storybook -p 6006 -c .storybook",
+    "start": "start-storybook",
     "format": "prettier --write \"src/**/*.+(js|css|json)\""
   },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   }
 }
