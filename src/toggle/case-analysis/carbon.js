@@ -5,15 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import PropTypes from "prop-types";
-import React from "react";
-import classNames from "classnames";
-import {settings} from "carbon-components";
-import setupGetInstanceId from "../../tools/setupGetInstanceId";
-import {keys, match} from "../../tools/key";
+import PropTypes from "prop-types"
+import React from "react"
+import classNames from "classnames"
+import {settings} from "carbon-components"
+import setupGetInstanceId from "../../tools/setupGetInstanceId"
+import {keys, match} from "../../tools/key"
 
-const {prefix} = settings;
-const getInstanceId = setupGetInstanceId();
+const {prefix} = settings
+const getInstanceId = setupGetInstanceId()
 
 class Toggle extends React.Component {
   static propTypes = {
@@ -51,7 +51,7 @@ class Toggle extends React.Component {
      * Specify the label for the "on" position
      */
     labelB: PropTypes.string.isRequired,
-  };
+  }
 
   static defaultProps = {
     defaultToggled: false,
@@ -59,7 +59,7 @@ class Toggle extends React.Component {
     labelA: "Off",
     labelB: "On",
     onToggle: () => {},
-  };
+  }
 
   render() {
     const {
@@ -74,23 +74,23 @@ class Toggle extends React.Component {
       labelA,
       labelB,
       ...other
-    } = this.props;
+    } = this.props
 
-    let input;
+    let input
     const wrapperClasses = classNames({
       [`${prefix}--form-item`]: true,
       [className]: className,
-    });
+    })
 
-    const checkedProps = {};
+    const checkedProps = {}
 
     if (typeof toggled !== "undefined") {
-      checkedProps.checked = toggled;
+      checkedProps.checked = toggled
     } else {
-      checkedProps.defaultChecked = defaultToggled;
+      checkedProps.defaultChecked = defaultToggled
     }
 
-    const labelTextId = !labelText ? undefined : `${id}-label`;
+    const labelTextId = !labelText ? undefined : `${id}-label`
 
     return (
       <div>
@@ -108,17 +108,17 @@ class Toggle extends React.Component {
             className={`${prefix}--toggle`}
             aria-labelledby={labelTextId}
             onChange={evt => {
-              onChange && onChange(evt);
-              onToggle(input.checked, id, evt);
+              onChange && onChange(evt)
+              onToggle(input.checked, id, evt)
             }}
             ref={el => {
-              input = el;
+              input = el
             }}
             onKeyUp={evt => {
               if (match(evt, keys.ENTER)) {
-                input.checked = !input.checked;
-                onChange(evt);
-                onToggle(input.checked, id, evt);
+                input.checked = !input.checked
+                onChange(evt)
+                onToggle(input.checked, id, evt)
               }
             }}
           />
@@ -140,8 +140,8 @@ class Toggle extends React.Component {
           </label>
         </div>
       </div>
-    );
+    )
   }
 }
 
-export default Toggle;
+export default Toggle

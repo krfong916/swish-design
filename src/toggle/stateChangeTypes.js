@@ -1,0 +1,8 @@
+export const toggleOn = "__toggle_state_on__"
+export const toggleOff = "__toggle_state_off__"
+export const clickToggle = "__toggle_click_toggle__"
+export const keydownArrowLeft = "__toggle_keydown_arrow_left__"
+export const keydownArrowRight = "__toggle_keydown_arrow_right__"
+export const keydownSpacebar = "__toggle_keydown_spacebar__"
+export const toggleMouseenter = "__toggle_mouseenter__"
+export const toggleMouseleave = "__toggle_mouseleave__"

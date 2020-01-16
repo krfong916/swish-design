@@ -1,9 +1,21 @@
-import Toggle from "./toggle";
+import React from "react"
+import {render, fireEvent} from "@testing-library/react"
+import Toggle from "./toggle"
 
 describe("Toggle component", function() {
-	it("works", function() {});
-	// is called with a default state
-	// expect to be on
+	let toggle
+	beforeEach(() => {
+		toggle = render(<Toggle />)
+	})
+
+	it("works", function() {
+		expect(toggle).toBeDefined()
+	})
+
+	it("is called with default state", function() {
+		expect(toggle.state().on).toBe(true)
+	})
+
 	//
 	// it changes state when clicked
 	// expect state to be off
@@ -24,4 +36,4 @@ describe("Toggle component", function() {
 	// expect toggle to be unclickable with a specified default state
 	//
 	//
-});
+})

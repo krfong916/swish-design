@@ -1,20 +1,26 @@
 {
-  "name": "yishu",
+  "name": "Swish",
   "version": "1.0.0",
-  "description": "Personal Design System because it's yìshù, meaning art",
+  "description": "Swish Components",
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.4",
-    "@babel/preset-env": "^7.5.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.0",
+    "@babel/preset-env": "^7.8.2",
+    "@babel/preset-react": "^7.8.0",
     "@storybook/react": "^5.3.0",
-    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/dom": "^6.11.0",
     "@testing-library/react": "^9.4.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-jsdoc": "^15.3.4",
     "eslint-plugin-json": "^1.4.0",
     "husky": "^3.0.0",
+    "jest": "^24.9.0",
     "lint-staged": "^9.2.0",
     "prettier": "^1.18.2",
     "prettier-eslint": "^9.0.0",
@@ -22,6 +28,8 @@
   },
   "scripts": {
     "start": "start-storybook",
+    "test": "jest --config ./jest.config.js",
+    "test:watch": "jest --watch --config ./jest.config.js",
     "format": "prettier --write \"src/**/*.+(js|css|json)\""
   },
   "husky": {
@@ -30,6 +38,7 @@
     }
   },
   "dependencies": {
+    "classnames": "^2.2.6",
     "react": "^16.12.0",
     "react-dom": "^16.12.0"
   }

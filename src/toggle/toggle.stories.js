@@ -1,14 +1,10 @@
-import React from "react";
-import Toggle from "./toggle";
+import React from "react"
+import Usage from "./usage"
 
-export default {title: "Toggle"};
+export default {title: "Toggle"}
 
-export const basic = () => (
-	<div>
-		<Toggle />
-	</div>
-);
+export const basic = () => <Usage />
 
 basic.story = {
 	name: "toggle",
-};
+}
