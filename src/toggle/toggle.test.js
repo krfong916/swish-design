@@ -14,6 +14,7 @@ describe("Toggle component", function() {
 
 	it("is called with default state", function() {
 		expect(toggle.state().on).toBe(true)
+		fireEvent.click()
 	})
 
 	//
