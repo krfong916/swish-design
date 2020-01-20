@@ -1,0 +1,37 @@
+.holder,
+.holder__checked {
+	height: 1.5em;
+	width: 3em;
+	border-radius: 2em;
+	display: inline-block;
+	border: 2px solid rgba(135, 149, 161, 0.25);
+}
+
+.holder {
+	background-color: #fff;
+	transition: background-color 0.25s linear;
+}
+
+.holder__checked {
+	background-color: #6cb2eb;
+	transition: background-color 0.25s linear;
+}
+
+.knob {
+	outline: none;
+	height: 100%;
+	width: 50%;
+	border: none;
+	box-shadow: 2px 3px 5px hsla(0, 0%, 0%, 0.2);
+	border-radius: 50%;
+}
+
+.knob[aria-checked="false"] {
+	margin-left: -2%;
+	transition: margin-left 0.15s linear;
+}
+
+.knob[aria-checked="true"] {
+	margin-left: 50%;
+	transition: margin-left 0.15s ease;
+}

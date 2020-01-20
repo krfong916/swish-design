@@ -1,3 +1,4 @@
+export const toggleTest = "__toggle_test__"
 export const toggleOn = "__toggle_state_on__"
 export const toggleOff = "__toggle_state_off__"
 export const clickToggle = "__toggle_click_toggle__"

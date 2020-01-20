@@ -1,5 +1,5 @@
 import React, {Component} from "react"
-
+import "./switch.css"
 class Switch extends Component {
 	render() {
 		console.log("this.props", this.props)
@@ -11,16 +11,18 @@ class Switch extends Component {
 			tabIndex,
 			"aria-checked": ariaChecked,
 		} = this.props
+		let knob = "knob"
+		let holder = on ? "holder__checked" : "holder"
 
 		return (
-			<div>
+			<div className={holder} onClick={toggle}>
 				<button
+					className={knob}
 					tabIndex
 					role={role}
 					aria-checked={ariaChecked}
-					onClick={toggle}
 					onKeyDown={onKeyDown}
-				>{`${on}`}</button>
+				></button>
 			</div>
 		)
 	}
