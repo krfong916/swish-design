@@ -13,9 +13,13 @@ class Switch extends Component {
 		} = this.props
 		let knob = "knob"
 		let holder = on ? "holder__checked" : "holder"
+		let holderBackground = on
+			? "holder-background__checked"
+			: "holder-background"
 
 		return (
 			<div className={holder} onClick={toggle}>
+				<div className={holderBackground} />
 				<button
 					className={knob}
 					tabIndex
