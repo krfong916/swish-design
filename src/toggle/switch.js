@@ -3,36 +3,36 @@ import classNames from "classnames"
 import "./switch.css"
 
 class Switch extends Component {
-	render() {
-		let {
-			on,
-			toggle,
-			role,
-			"aria-checked": ariaChecked,
-			onKeyDown,
-			size,
-			tabIndex,
-		} = this.props
-		let switchClassName = ["switch", on == true ? "-on" : "-off"].join("")
-		let knobClassName = "knob"
+  render() {
+    let {
+      on,
+      toggle,
+      role,
+      "aria-checked": ariaChecked,
+      onKeyDown,
+      size,
+      tabIndex,
+    } = this.props
+    let switchClassName = ["switch", on == true ? "-on" : "-off"].join("")
+    let knobClassName = "knob"
 
-		if (size == "small") {
-			switchClassName += "__small"
-			knobClassName += "__small"
-		}
+    if (size == "small") {
+      switchClassName += "__small"
+      knobClassName += "__small"
+    }
 
-		return (
-			<div className={switchClassName} onClick={toggle}>
-				<button
-					className={knobClassName}
-					tabIndex
-					role={role}
-					aria-checked={ariaChecked}
-					onKeyDown={onKeyDown}
-				></button>
-			</div>
-		)
-	}
+    return (
+      <div className={switchClassName} onClick={toggle}>
+        <button
+          className={knobClassName}
+          tabIndex
+          role={role}
+          aria-checked={ariaChecked}
+          onKeyDown={onKeyDown}
+        ></button>
+      </div>
+    )
+  }
 }
 
 export default Switch

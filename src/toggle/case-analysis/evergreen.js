@@ -1,17 +1,17 @@
-import {css} from "glamor";
-import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
-import Box, {spacing, position, layout} from "ui-box";
-import {withTheme} from "../../theme";
+import {css} from "glamor"
+import React, {PureComponent} from "react"
+import PropTypes from "prop-types"
+import Box, {spacing, position, layout} from "ui-box"
+import {withTheme} from "../../theme"
 
 const animationEasing = {
   spring: `cubic-bezier(0.175, 0.885, 0.320, 1.175)`,
-};
+}
 
 const handleStyleClass = css({
   backgroundColor: "#fff",
   borderRadius: 9999,
-}).toString();
+}).toString()
 
 const iconContainerStyleClass = css({
   transition: `all 500ms ${animationEasing.spring}`,
@@ -32,7 +32,7 @@ const iconContainerStyleClass = css({
   '&[data-checked="true"] > svg': {
     transform: "scale(1)",
   },
-}).toString();
+}).toString()
 
 const handleContainerStyleClass = css({
   transition: "transform 200ms ease-in-out",
@@ -40,7 +40,7 @@ const handleContainerStyleClass = css({
   '&[data-checked="true"]': {
     transform: "translateX(50%)",
   },
-}).toString();
+}).toString()
 
 const CheckIcon = ({size, fill = "currentColor", ...props}) => (
   <svg width={10} height={size} viewBox="0 0 10 7" {...props}>
@@ -50,16 +50,16 @@ const CheckIcon = ({size, fill = "currentColor", ...props}) => (
       d="M4 4.586L1.707 2.293A1 1 0 1 0 .293 3.707l3 3a.997.997 0 0 0 1.414 0l5-5A1 1 0 1 0 8.293.293L4 4.586z"
     />
   </svg>
-);
+)
 
 CheckIcon.propTypes = {
   fill: PropTypes.string,
   size: PropTypes.number,
-};
+}
 
 const isControlled = component => {
-  return {}.hasOwnProperty.call(component.props, "checked");
-};
+  return {}.hasOwnProperty.call(component.props, "checked")
+}
 
 class Switch extends PureComponent {
   static propTypes = {
@@ -131,7 +131,7 @@ class Switch extends PureComponent {
      * Theme provided by ThemeProvider.
      */
     theme: PropTypes.object.isRequired,
-  };
+  }
 
   static defaultProps = {
     height: 16,
@@ -139,25 +139,25 @@ class Switch extends PureComponent {
     appearance: "default",
     hasCheckIcon: true,
     disabled: false,
-  };
+  }
 
   constructor(props, context) {
-    super(props, context);
+    super(props, context)
     this.state = {
       checked: props.checked || props.defaultChecked || false,
-    };
+    }
   }
 
   handleChange = value => {
     if (isControlled(this)) {
-      this.props.onChange(value);
+      this.props.onChange(value)
     } else {
       this.setState(({checked}) => ({
         checked: !checked,
-      }));
-      this.props.onChange(value);
+      }))
+      this.props.onChange(value)
     }
-  };
+  }
 
   render() {
     const {
@@ -173,10 +173,10 @@ class Switch extends PureComponent {
       hasCheckIcon,
       defaultChecked,
       ...props
-    } = this.props;
+    } = this.props
 
-    const checked = isControlled(this) ? checkedProps : this.state.checked;
-    const themedClassName = theme.getSwitchClassName(appearance);
+    const checked = isControlled(this) ? checkedProps : this.state.checked
+    const themedClassName = theme.getSwitchClassName(appearance)
 
     return (
       <Box
@@ -222,8 +222,8 @@ class Switch extends PureComponent {
           </Box>
         </Box>
       </Box>
-    );
+    )
   }
 }
 
-export default withTheme(Switch);
+export default withTheme(Switch)

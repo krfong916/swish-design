@@ -6,5 +6,5 @@ export default {title: "Toggle"}
 export const basic = () => <Usage />
 
 basic.story = {
-	name: "toggle",
+  name: "toggle",
 }

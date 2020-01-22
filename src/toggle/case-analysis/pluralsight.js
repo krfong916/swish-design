@@ -1,13 +1,13 @@
-import {compose, css} from "glamor";
-import PropTypes from "prop-types";
-import React from "react";
+import {compose, css} from "glamor"
+import PropTypes from "prop-types"
+import React from "react"
 
-import filterReactProps from "@pluralsight/ps-design-system-filter-react-props";
-import Halo from "@pluralsight/ps-design-system-halo";
-import {useTheme} from "@pluralsight/ps-design-system-theme";
+import filterReactProps from "@pluralsight/ps-design-system-filter-react-props"
+import Halo from "@pluralsight/ps-design-system-halo"
+import {useTheme} from "@pluralsight/ps-design-system-theme"
 
-import stylesheet from "../css/index.js";
-import * as vars from "../vars/index.js";
+import stylesheet from "../css/index.js"
+import * as vars from "../vars/index.js"
 
 const styles = {
   switch: (themeName, {disabled, labelAlign}) =>
@@ -54,30 +54,30 @@ const styles = {
     ),
 
   checkbox: _ => css(stylesheet[".psds-switch__checkbox"]),
-};
+}
 
 const Switch = React.forwardRef((props, forwardedRef) => {
-  const {checked, children, disabled, error, ...rest} = props;
+  const {checked, children, disabled, error, ...rest} = props
 
-  const ref = React.useRef();
-  React.useImperativeHandle(forwardedRef, () => ref.current);
+  const ref = React.useRef()
+  React.useImperativeHandle(forwardedRef, () => ref.current)
 
-  const themeName = useTheme();
-  const [isFocused, setIsFocused] = React.useState(false);
+  const themeName = useTheme()
+  const [isFocused, setIsFocused] = React.useState(false)
 
   const handleBlur = combineFns(() => {
-    setIsFocused(false);
-  }, props.onBlur);
+    setIsFocused(false)
+  }, props.onBlur)
 
   function handleClick(evt) {
-    if (disabled || !isFunction(props.onClick)) return;
+    if (disabled || !isFunction(props.onClick)) return
 
-    props.onClick(!props.checked);
+    props.onClick(!props.checked)
   }
 
   const handleFocus = combineFns(() => {
-    setIsFocused(true);
-  }, props.onFocus);
+    setIsFocused(true)
+  }, props.onFocus)
 
   return (
     <button
@@ -109,8 +109,8 @@ const Switch = React.forwardRef((props, forwardedRef) => {
         <label {...styles.label(themeName, props)}>{children}</label>
       )}
     </button>
-  );
-});
+  )
+})
 
 Switch.propTypes = {
   checked: PropTypes.bool,
@@ -126,7 +126,7 @@ Switch.propTypes = {
   size: PropTypes.oneOf(Object.keys(vars.sizes)),
   style: PropTypes.object,
   tabIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-};
+}
 
 Switch.defaultProps = {
   checked: false,
@@ -136,22 +136,22 @@ Switch.defaultProps = {
   labelAlign: vars.labelAligns.right,
   size: vars.sizes.large,
   tabIndex: 0,
-};
+}
 
-Switch.colors = vars.colors;
-Switch.sizes = vars.sizes;
-Switch.labelAligns = vars.labelAligns;
+Switch.colors = vars.colors
+Switch.sizes = vars.sizes
+Switch.labelAligns = vars.labelAligns
 
-export const colors = vars.colors;
-export const sizes = vars.sizes;
-export const labelAligns = vars.labelAligns;
+export const colors = vars.colors
+export const sizes = vars.sizes
+export const labelAligns = vars.labelAligns
 
-export default Switch;
+export default Switch
 
 function combineFns(...fns) {
-  return (...args) => fns.filter(isFunction).forEach(fn => fn(...args));
+  return (...args) => fns.filter(isFunction).forEach(fn => fn(...args))
 }
 
 function isFunction(fn) {
-  return typeof fn === "function";
+  return typeof fn === "function"
 }
