@@ -3,29 +3,15 @@ import Toggle from "./toggle"
 import Switch from "./switch"
 
 class Usage extends Component {
-	handleKeyDownStateReducer = (state, changes) => {
-		console.log("state", state)
-		console.log("changes", changes)
-		return changes
-	}
-
-	// handleKeyDownA = event => {
-	// 	console.log("this.handleKeyDownA", event)
-	// }
-	// handleKeyDownB = event => {
-	// 	console.log("this.handleKeyDownB", event)
-	// }
-
 	render() {
 		return (
-			<Toggle stateReducer={this.handleKeyDownStateReducer}>
+			<Toggle>
 				{({on, getToggleProps, toggle}) => (
 					<div>
 						<Switch
 							{...getToggleProps({
 								on: on,
 								toggle,
-								onKeyDown: event => {},
 							})}
 						/>
 					</div>

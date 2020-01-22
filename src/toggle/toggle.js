@@ -1,64 +1,60 @@
 import React, {Component} from "react"
 import * as stateChangeTypes from "./stateChangeTypes"
-
-function callAll(...functions) {
-	return function(...args) {
-		functions.forEach(function(fn) {
-			fn(...args)
-		})
-	}
-}
-
-function pluck(property, obj) {
-	return Object.keys(obj).reduce((temp, key) => {
-		if (key != property) temp[key] = obj[key]
-		return temp
-	}, {})
-}
-
-function shallowCompare(obj1, obj2) {
-	return (
-		Object.keys(obj1).length == Object.keys(obj2).length &&
-		Object.keys(obj1).every(key => obj1[key] == obj2[key])
-	)
-}
+import {callAll, hasStateChange} from "../utils"
 
 class Toggle extends Component {
 	static defaultProps = {
-		stateReducer: (state, changes) => changes,
+		stateReducer: (state, changes) => {
+			console.log(changes)
+			return changes
+		},
 	}
 
-	state = {on: false}
+	state = {on: false, moreState: false, huh: true}
 
-	// we want to suggest the changes to be made i.e. the state that is about to be set
-	// and allow the user to decide if the state to be set is one they want made
-	// we'll expose those changes to the user
-	// calling the stateReducer
-	// then we'll make our changes
-	internalSetState = recommendedChanges => {
+	internalSetState = recommendedState => {
 		this.setState(currentState => {
-			// we pass the current state and the recommended changes
-			// and we receive the changes the user would like
-			const changes = this.props.stateReducer(currentState, recommendedChanges)
-			// the user will pass either the currentState, the recommended changes, or an entirely new state back
-			// we need to remove the type property from the changes object so that we don't merge it with the state
-			// return an object without
-			// pluck ('type')
-
-			const reducedChanges = pluck("type", changes)
-			// what to do if the reducedChanges is the same as the currentState? we don't want an unnecessary re-render
-			// return reducedChanges || null
-			return shallowCompare(changes, reducedChanges) ? null : reducedChanges
+			const reducedState = this.props.stateReducer(
+				currentState,
+				recommendedState,
+			)
+			const {type: ignoredType, ...stateToChange} = reducedState
+			return hasStateChange(currentState, stateToChange) ? null : stateToChange
 		})
 	}
 
 	toggle = () => {
-		// we must define the current state
-		// and the type of change that will occur
-		// do we provide the current state
-		// or do we provide the state change that should occur?
 		const {on} = this.state
 		this.internalSetState({on: !on, type: stateChangeTypes.toggleTest})
+	}
+
+	handleKeyDown = event => {
+		const key = getArrowKeys(event)
+		if (this.keyDownHandlers[key]) {
+			this.keyDownHandlers[key].call(this, event)
+		}
+	}
+
+	keyDownHandlers = {
+		ArrowLeft(event) {
+			this.internalSetState({
+				on: false,
+				type: stateChangeTypes.keydownArrowLeft,
+			})
+		},
+		ArrowRight(event) {
+			this.internalSetState({
+				on: true,
+				type: stateChangeTypes.keydownArrowRight,
+			})
+		},
+		" "(event) {
+			event.preventDefault()
+			this.internalSetState({
+				on: !this.state.on,
+				type: stateChangeTypes.keydownSpacebar,
+			})
+		},
 	}
 
 	getToggleProps = ({onKeyDown, ...rest} = {}) => {
@@ -68,6 +64,7 @@ class Toggle extends Component {
 			tabIndex: 0,
 			onKeyDown: onKeyDown,
 			"aria-checked": this.state.on,
+			onKeyDown,
 			...rest,
 		}
 	}
@@ -87,15 +84,7 @@ class Toggle extends Component {
 
 export default Toggle
 
-// need for onkeydown to happen
-// keydown is for arrow keys
-// we can use event.key and event.keycode
-// ArrowLeft
-// ArrowRight
-// and space is ' '
-// keypress is for all other keys
-
-// I want the user to be able to apply their own event handlers
-// without overriding the functionality of
-// onkeydown
-// onclick
+function getArrowKeys(event) {
+	const {key} = event
+	return key
+}
