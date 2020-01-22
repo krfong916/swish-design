@@ -4,10 +4,7 @@ import {callAll, hasStateChange} from "../utils"
 
 class Toggle extends Component {
   static defaultProps = {
-    stateReducer: (state, changes) => {
-      console.log(changes)
-      return changes
-    },
+    stateReducer: (state, changes) => changes,
   }
 
   state = {on: false, moreState: false, huh: true}
