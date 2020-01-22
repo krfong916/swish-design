@@ -1,26 +1,30 @@
 import React, {Component} from "react"
+import classNames from "classnames"
 import "./switch.css"
+
 class Switch extends Component {
 	render() {
 		let {
 			on,
-			role,
 			toggle,
-			onKeyDown,
-			tabIndex,
+			role,
 			"aria-checked": ariaChecked,
+			onKeyDown,
+			size,
+			tabIndex,
 		} = this.props
-		let knob = "knob"
-		let holder = on ? "holder__checked" : "holder"
-		let holderBackground = on
-			? "holder-background__checked"
-			: "holder-background"
+		let switchClassName = ["switch", on == true ? "-on" : "-off"].join("")
+		let knobClassName = "knob"
+
+		if (size == "small") {
+			switchClassName += "__small"
+			knobClassName += "__small"
+		}
 
 		return (
-			<div className={holder} onClick={toggle}>
-				<div className={holderBackground} />
+			<div className={switchClassName} onClick={toggle}>
 				<button
-					className={knob}
+					className={knobClassName}
 					tabIndex
 					role={role}
 					aria-checked={ariaChecked}
@@ -33,11 +37,6 @@ class Switch extends Component {
 
 export default Switch
 
-// import classNames from "classnames"
-// import "./switch.css"
-// const switchClassName = classNames({
-// 	// default toggle style
-// 	// toggle-on
-// 	// toggle-off
-// 	// any additional className passed as a property
-// })
+// custom label
+// support left and right, top bottom
+// same place, left or right

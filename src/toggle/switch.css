@@ -1,18 +1,69 @@
-.holder,
-.holder__checked {
+/*
+################
+               switch: checked/unchecked
+################
+*/
+
+.switch-off,
+.switch-on {
 	position: relative;
-	height: 1.5em;
-	width: 3em;
+	height: 22px;
+	line-height: 20px;
+	width: 44px;
 	border-radius: 2em;
 	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
 }
 
-.holder {
+.switch-off {
 	background-color: #dae1e7;
 	border: 2px solid #dae1e7;
 }
 
-.holder-background {
+.switch-on {
+	background-color: #4bd763;
+	border: 2px solid #4bd763;
+	transition: background-color 0.25s linear;
+}
+
+/*
+################
+               switch-small: checked/unchecked
+################
+*/
+
+.switch-off__small,
+.switch-on__small {
+	position: relative;
+	min-width: 28px;
+	height: 16px;
+	line-height: 14px;
+	border-radius: 14px;
+	display: inline-block;
+	vertical-align: middle;
+	box-sizing: border-box;
+}
+
+.switch-off__small {
+	background-color: #dae1e7;
+	border: 1px solid #dae1e7;
+}
+
+.switch-on__small {
+	background-color: #4bd763;
+	border: 1px solid #4bd763;
+	transition: background-color 0.25s linear;
+}
+
+/*
+################
+               switch: checked/unchecked background
+################
+*/
+
+.switch-off::before {
+	content: "";
 	display: inline-block;
 	height: 100%;
 	width: 100%;
@@ -22,91 +73,80 @@
 	transition: all 0.2s linear;
 }
 
-.holder-background__checked {
+.switch-on::before {
+	content: "";
 	transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
 }
 
-.holder__checked {
-	background-color: #4bd763;
-	border: 2px solid #4bd763;
-	transition: background-color 0.25s linear;
-}
-
-.knob {
-	position: absolute;
-	outline: none;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 50%;
-	border: none;
-	box-shadow: 2px 3px 5px hsla(0, 0%, 0%, 0.2);
-	border-radius: 50%;
-}
-
-.knob[aria-checked="false"] {
-	margin-left: -2%;
-	transition: margin-left 0.15s linear;
-}
-
-.knob[aria-checked="true"] {
-	margin-left: 52%;
-	transition: margin-left 0.15s ease;
-}
-
-/*.holder,
-.holder__checked {
-	position: relative;
-	height: 1.5em;
-	width: 3em;
-	border-radius: 2em;
-	display: inline-block;
-	border: 2px solid #dae1e7;
-	transition: border 0.25s linear;
-}
-
-.holder__checked {
-	border: 2px solid #51d88a;
-}
-
-.holder-background,
-.holder-background__checked {
-	display: inline-block;
-	height: 108%;
-	width: 108%;
-	margin-left: -4%;
-	margin-top: -4%;
-	border-radius: 1em;
-}
-
-.holder-background {
-	transition: background-color 0.25s;
-}
-
-.holder-background__checked {
-	background-color: #51d88a;
-	transition: background-color 0.25s linear;
-}
-
-.knob {
-	position: absolute;
-	outline: none;
-	top: 0;
-	left: 0;
-	height: 100%;
-	width: 50%;
-	border: none;
-	box-shadow: 2px 3px 5px hsla(0, 0%, 0%, 0.2);
-	border-radius: 50%;
-}
-
-.knob[aria-checked="false"] {
-	margin-left: -2%;
-	transition: margin-left 0.15s linear;
-}
-
-.knob[aria-checked="true"] {
-	margin-left: 52%;
-	transition: margin-left 0.15s ease;
-}
+/*
+################
+               switch-small: checked/unchecked background
+################
 */
+
+.switch-off__small::before {
+	content: "";
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	background-color: #fff;
+	border-radius: 2em;
+	transform: translate3d(0px, 0px, 0) scale3d(1, 1, 1);
+	transition: all 0.2s linear;
+}
+
+.switch-on__small::before {
+	content: "";
+	transform: translate3d(18px, 2px, 0) scale3d(0, 0, 0);
+}
+
+/*
+################
+               knob
+################
+*/
+
+.knob {
+	position: absolute;
+	outline: none;
+	top: 0;
+	left: 0;
+	height: 18px;
+	width: 18px;
+	border: none;
+	box-shadow: 2px 3px 5px hsla(0, 0%, 0%, 0.2);
+	border-radius: 18px;
+}
+
+.knob[aria-checked="false"],
+.knob__small[aria-checked="false"] {
+	transition: margin-left 0.15s linear;
+}
+
+.knob[aria-checked="true"] {
+	margin-left: 54%;
+	transition: margin-left 0.15s ease;
+}
+
+/*
+################
+               knob-small
+################
+*/
+
+.knob__small {
+	position: absolute;
+	outline: none;
+	top: 0;
+	left: 0;
+	height: 14px;
+	width: 12px;
+	border: none;
+	box-shadow: 2px 3px 5px hsla(0, 0%, 0%, 0.2);
+	border-radius: 12px;
+}
+
+.knob__small[aria-checked="true"] {
+	margin-left: 48%;
+	transition: margin-left 0.15s ease;
+}
