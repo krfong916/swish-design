@@ -9,6 +9,20 @@ function callAll(...functions) {
 	}
 }
 
+function pluck(property, obj) {
+	return Object.keys(obj).reduce((temp, key) => {
+		if (key != property) temp[key] = obj[key]
+		return temp
+	}, {})
+}
+
+function shallowCompare(obj1, obj2) {
+	return (
+		Object.keys(obj1).length == Object.keys(obj2).length &&
+		Object.keys(obj1).every(key => obj1[key] == obj2[key])
+	)
+}
+
 class Toggle extends Component {
 	static defaultProps = {
 		stateReducer: (state, changes) => changes,
@@ -16,27 +30,35 @@ class Toggle extends Component {
 
 	state = {on: false}
 
-	internalSetState = (changes, cb) => {
-		this.setState(state => {
-			this.props.stateReducer(newStateToSet)
+	// we want to suggest the changes to be made i.e. the state that is about to be set
+	// and allow the user to decide if the state to be set is one they want made
+	// we'll expose those changes to the user
+	// calling the stateReducer
+	// then we'll make our changes
+	internalSetState = recommendedChanges => {
+		this.setState(currentState => {
+			// we pass the current state and the recommended changes
+			// and we receive the changes the user would like
+			const changes = this.props.stateReducer(currentState, recommendedChanges)
+			// the user will pass either the currentState, the recommended changes, or an entirely new state back
+			// we need to remove the type property from the changes object so that we don't merge it with the state
+			// return an object without
+			// pluck ('type')
 
-			return newStateToSet
+			const reducedChanges = pluck("type", changes)
+			// what to do if the reducedChanges is the same as the currentState? we don't want an unnecessary re-render
+			// return reducedChanges || null
+			return shallowCompare(changes, reducedChanges) ? null : reducedChanges
 		})
-		// we want to suggest the changes to be made i.e. the state that is about to be set
-		// and allow the user to decide if the state to be set is one they want made
-		// we'll expose those changes to the user
-		// calling the stateReducer
-		// then we'll make our changes
 	}
 
 	toggle = () => {
 		// we must define the current state
 		// and the type of change that will occur
-
-		this.setState(({on}) => {
-			return {on: !on}
-		})
-		// internalSetState({currentState, type: stateChangeTypes.toggleTest}, cb)
+		// do we provide the current state
+		// or do we provide the state change that should occur?
+		const {on} = this.state
+		this.internalSetState({on: !on, type: stateChangeTypes.toggleTest})
 	}
 
 	getToggleProps = ({onKeyDown, ...rest} = {}) => {

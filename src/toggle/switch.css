@@ -19,7 +19,7 @@
 	background-color: #fff;
 	border-radius: 2em;
 	transform: translate3d(0px, 0px, 0) scale3d(1, 1, 1);
-	transition: all 0.25s linear;
+	transition: all 0.2s linear;
 }
 
 .holder-background__checked {

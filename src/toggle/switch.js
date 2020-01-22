@@ -2,7 +2,6 @@ import React, {Component} from "react"
 import "./switch.css"
 class Switch extends Component {
 	render() {
-		console.log("this.props", this.props)
 		let {
 			on,
 			role,

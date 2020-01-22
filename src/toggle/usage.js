@@ -3,10 +3,11 @@ import Toggle from "./toggle"
 import Switch from "./switch"
 
 class Usage extends Component {
-	// handleKeyDownStateReducer = (state, changes) => {
-	// 	console.log("user-defined keydown", state)
-	// 	console.log("user-defined keydown", changes)
-	// }
+	handleKeyDownStateReducer = (state, changes) => {
+		console.log("state", state)
+		console.log("changes", changes)
+		return changes
+	}
 
 	// handleKeyDownA = event => {
 	// 	console.log("this.handleKeyDownA", event)
