@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/krfong916/swish-components.svg?branch=toggle)](https://travis-ci.com/krfong916/swish-components)
+
 # Swish Components
 
 The component library for Swish Design System
