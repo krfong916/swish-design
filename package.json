@@ -16,6 +16,7 @@
     "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "classnames": "^2.2.6",
+    "coveralls": "^3.0.9",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
     "eslint-config-prettier": "^6.0.0",
@@ -34,6 +35,7 @@
     "start": "start-storybook",
     "test": "jest --config ./jest.config.js",
     "test:watch": "jest --watch --config ./jest.config.js",
+    "test:cover": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
     "format": "prettier --write \"src/**/*.+(js|css|json)\""
   },
   "husky": {
