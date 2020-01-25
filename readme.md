@@ -30,3 +30,4 @@ The component library for Swish Design System
 ## Product Backlog
 
 - [ ] switch with labels
+- [ ] disabled state and styling

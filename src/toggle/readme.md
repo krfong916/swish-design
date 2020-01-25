@@ -5,5 +5,3 @@
 - [x] apply custom styles and computed classname
 - [x] on key press
 - [x] tests
-- [ ] disabled state and styling
-- [ ] custom labels
