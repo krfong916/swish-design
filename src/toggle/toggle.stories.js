@@ -1,5 +1,10 @@
-import {storiesOf} from "@storybook/html";
+import React from "react"
+import Usage from "./usage"
 
-storiesOf("toggle", module).add(
- 
-);
+export default {title: "Toggle"}
+
+export const basic = () => <Usage />
+
+basic.story = {
+  name: "toggle",
+}
