@@ -25,7 +25,7 @@ class Switch extends Component {
       <div className={switchClassName} onClick={toggle}>
         <button
           className={knobClassName}
-          tabIndex
+          tabIndex={tabIndex}
           role={role}
           aria-checked={ariaChecked}
           onKeyDown={onKeyDown}
