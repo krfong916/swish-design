@@ -7,7 +7,7 @@ class Toggle extends Component {
     stateReducer: (state, changes) => changes,
   }
 
-  state = {on: false, moreState: false, huh: true}
+  state = {on: false}
 
   internalSetState = recommendedState => {
     this.setState(currentState => {
@@ -20,9 +20,9 @@ class Toggle extends Component {
     })
   }
 
-  toggle = () => {
+  toggle = (type = stateChangeTypes.toggle) => {
     const {on} = this.state
-    this.internalSetState({on: !on, type: stateChangeTypes.toggleTest})
+    this.internalSetState({on: !on, type})
   }
 
   handleKeyDown = event => {
@@ -33,13 +33,13 @@ class Toggle extends Component {
   }
 
   keyDownHandlers = {
-    ArrowLeft(event) {
+    ArrowLeft() {
       this.internalSetState({
         on: false,
         type: stateChangeTypes.keydownArrowLeft,
       })
     },
-    ArrowRight(event) {
+    ArrowRight() {
       this.internalSetState({
         on: true,
         type: stateChangeTypes.keydownArrowRight,
