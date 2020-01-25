@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/krfong916/swish-components.svg?branch=toggle)](https://travis-ci.com/krfong916/swish-components)
+[![Build Status](https://travis-ci.com/krfong916/swish-components.svg?branch=master)](https://travis-ci.com/krfong916/swish-components)
 
 # Swish Components
 
