@@ -27,8 +27,8 @@ The component library for Swish Design System
 
 ## Components Completed
 
-- [ ] toggle
-- [ ] switch
+- [x] toggle
+- [x] switch
 
 ## Product Backlog
 
