@@ -3,6 +3,7 @@ node_js:
   - 11
 
 cache:
+  yarn: true
   directories:
     - node_modules
 
