@@ -1,0 +1,5 @@
+- [ ] with icons
+- [ ] focus styles
+- [ ] held and pressed + released animation
+- [ ] react computed classname styles
+- [ ] with loader animation + timeout

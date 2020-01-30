@@ -1,0 +1,173 @@
+.swish-btn-container {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 38px;
+}
+
+/*
+################
+               default button styles and secondary
+################
+*/
+
+.swish-btn {
+  padding: 0 16px;
+  border-radius: 4px;
+  border: 1px solid #d9d9d9;
+  box-shadow: rgba(0, 0, 0, 0.043) 0px 2px 0px;
+  cursor: pointer;
+  outline: none;
+  transition: border-color ease 0.2s;
+}
+
+.swish-btn > span {
+  font-size: 14px;
+  line-height: 32px;
+  font-weight: 400;
+  white-space: nowrap;
+  text-align: center;
+  color: #595959;
+  transition: color ease 0.2s;
+}
+
+.swish-btn:hover {
+  border-color: rgb(64, 169, 255);
+  transition: border-color ease 0.2s;
+}
+
+.swish-btn:hover span {
+  color: rgb(64, 169, 255);
+  transition: color ease 0.2s;
+}
+
+/*
+################
+               primary
+################
+*/
+
+.swish-btn--primary {
+  background-color: #1890ff;
+  border-color: rgb(24, 144, 255);
+  transition: all ease 0.2s;
+}
+
+.swish-btn--primary > span {
+  color: #ffffff;
+  text-shadow: rgba(0, 0, 0, 0.12) 0px -1px 0px;
+}
+
+.swish-btn--primary:hover {
+  background-color: rgb(64, 169, 255);
+  border-color: rgb(64, 169, 255);
+  transition: all ease 0.2s;
+}
+
+.swish-btn--primary:hover span {
+  color: #ffffff;
+}
+
+/*
+################
+               dashed
+################
+*/
+
+.swish-btn--dashed {
+  border: 1px dashed #d9d9d9;
+}
+
+/*
+################
+               danger
+################
+*/
+
+.swish-btn--danger {
+  background-color: #f5222d;
+  border-color: #f5222d;
+  transition: all ease 0.2s;
+}
+
+.swish-btn--danger > span {
+  color: #ffffff;
+}
+
+.swish-btn--danger:hover {
+  background-color: #ff4d4f;
+  border-color: #ff4d4f;
+  transition: all ease 0.2s;
+}
+
+.swish-btn--danger:hover > span {
+  color: #ffffff;
+}
+
+/*
+################
+               warning
+################
+*/
+
+.swish-btn--warning {
+  background-color: #faad14;
+  border: 1px solid #faad14;
+  transition: all ease 0.2s;
+}
+
+.swish-btn--warning > span {
+  color: #ffffff;
+}
+
+.swish-btn--warning:hover {
+  background-color: #ffc53d;
+  border-color: #ffc53d;
+  transition: all ease 0.2s;
+}
+
+.swish-btn--warning:hover > span {
+  color: #ffffff;
+}
+
+/*
+################
+               disabled
+################
+*/
+
+.swish-btn--disabled {
+  background-color: #e8e8e8;
+  border-color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+.swish-btn--disabled:hover {
+  background-color: #e8e8e8;
+  border-color: #bfbfbf;
+}
+
+.swish-btn--disabled > span {
+  color: #8c8c8c;
+}
+
+.swish-btn--disabled:hover > span {
+  color: #8c8c8c;
+}
+
+/*
+################
+               link
+################
+*/
+
+.swish-btn--link {
+  border: none;
+  box-shadow: none;
+}
+
+.swish-btn--link:hover {
+  border: none;
+}
