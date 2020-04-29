@@ -92,3 +92,5 @@ Ant design
 
 Section on how Swish Design compares with other component libraries
 https://baseweb.design/discover-more/comparison/
+
+- Clarity
