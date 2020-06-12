@@ -9,13 +9,18 @@
     "@babel/plugin-proposal-class-properties": "^7.10.1",
     "@babel/preset-env": "^7.10.2",
     "@babel/preset-react": "^7.10.1",
-    "@carbon/grid": "^10.10.2",
+    "@carbon/grid": "^10.11.0",
     "@material/layout-grid": "^6.0.0",
+    "@storybook/addon-a11y": "^5.3.19",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-docs": "^5.3.19",
     "@storybook/addon-info": "^5.3.19",
+    "@storybook/addon-knobs": "^5.3.19",
+    "@storybook/addon-storysource": "^5.3.19",
     "@storybook/preset-scss": "^1.0.2",
     "@storybook/react": "^5.3.19",
     "@testing-library/dom": "^6.11.0",
-    "@testing-library/jest-dom": "^5.9.0",
+    "@testing-library/jest-dom": "^5.10.0",
     "@testing-library/react": "^9.4.0",
     "@types/jest": "^25.2.3",
     "babel-eslint": "^10.1.0",
@@ -26,10 +31,11 @@
     "css-loader": "^3.5.3",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.2",
-    "eslint": "^7.1.0",
+    "eslint": "^7.2.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-jsdoc": "^15.3.4",
     "eslint-plugin-json": "^1.4.0",
+    "eslint-plugin-prettier": "^3.1.3",
     "husky": "^4.2.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.2.0",
@@ -40,14 +46,15 @@
     "react": "^16.12.0",
     "react-docgen-typescript-loader": "^3.7.2",
     "react-dom": "^16.12.0",
+    "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",
     "ts-jest": "^26.1.0",
     "ts-loader": "^7.0.5",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.5"
   },
   "scripts": {
-    "start": "start-storybook",
+    "start": "start-storybook -p 6006 -c .storybook",
     "test": "jest --config ./jest.config.js",
     "test:watch": "jest --watch --config ./jest.config.js",
     "test:cover": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
@@ -59,7 +66,7 @@
     }
   },
   "lint-staged": {
-    "./src/**/*.+(js|css|json)": [
+    "./src/**/*.+(js|json)": [
       "eslint --fix",
       "prettier --write",
       "git add"

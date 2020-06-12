@@ -1,3 +1,4 @@
+# packages
 node_modules
 
 # yarn
@@ -6,3 +7,9 @@ yarn-error.log
 
 # coverage
 coverage
+
+# folders
+src/*/example/*
+build/
+# misc.
+.DS_Store
