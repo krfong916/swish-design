@@ -4,10 +4,10 @@
     "module": "commonjs",
     "target": "es5",
     "lib": ["es5", "es6", "es7", "es2017", "dom"],
-    "sourceMap": true,
-    "allowJs": true,
     "jsx": "react",
     "moduleResolution": "node",
+    "sourceMap": true,
+    "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
@@ -16,10 +16,10 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "declaration": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "alwaysStrict": true,
+    "esModuleInterop": true
   },
   "compileOnSave": true,
   "include": ["src/**/*"],
-  "exclude": ["node_modules", "src/**/example/*", "src/**/case-analysis/*"]
+  "exclude": ["src/**/example/*", "src/**/case-analysis/*"]
 }

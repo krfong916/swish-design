@@ -1,4 +1,5 @@
-const swishConfig = require("../webpack.config")
+const path = require("path");
+const swishConfig = require("../webpack.config");
 module.exports = {
   stories: ["../src/**/*.stories.tsx", "../src/**/*.stories.js"],
   addons: [
@@ -9,8 +10,8 @@ module.exports = {
     "@storybook/addon-storysource",
   ],
   webpackFinal: async config => {
-    config.module.rules.push(...swishConfig.module.rules)
-    config.resolve.extensions.push(".ts", ".tsx")
-    return config
+    config.module.rules.push(...swishConfig.module.rules);
+    config.resolve.extensions.push(".ts", ".tsx");
+    return config;
   },
-}
+};
