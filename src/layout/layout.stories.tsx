@@ -1,13 +1,9 @@
-import * as React from "react"
-import "./swish-grid.scss"
-import "./test.css"
+import React from "react";
+import { LayoutDemo } from "./layout-demo";
+export default { title: "Layout" };
 
-export default { title: "Layout" }
+export const Layout: React.FC = () => <LayoutDemo />;
 
-export const basic = () => {
-  return <div>here</div>
-}
-
-basic.story = {
+Layout.story = {
   name: "Responsive Grid",
-}
+};

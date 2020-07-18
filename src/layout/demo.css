@@ -1,0 +1,31 @@
+.demo-flex-grid {
+  display: flex;
+  flex-direction: row;
+  /*flex-wrap: wrap;*/
+  outline: 2px solid black;
+}
+
+.demo-flex-row {
+  /*flex-basis: 100%;*/
+  flex-grow: 1;
+  height: 20px;
+  border: 1px solid #23abc2;
+}
+
+.demo-grid {
+  display: grid;
+  grid-gap: 24px;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  outline: 2px solid black;
+}
+
+.demo-grid-row {
+}
+
+#span-4 {
+  grid-column-start: span 4;
+}
+
+#placement-8 {
+  grid-column-start: 8;
+}
