@@ -1,9 +1,21 @@
-@use 'mixins';
-@use 'variables';
+@use './mixins';
+@use './variables';
 @use 'sass:map';
 
-:root {
-}
+// margin changes
+.demo-grid {
+  display: grid;
+  outline: 2px solid black;
 
-.swish-grid {
+  // for every screen size defined in the breakpoint map
+  @each $breakpoint in map.keys(variables.$breakpoints) {
+    // declare responsive styles for each breakpoint interval
+    @include mixins.media_query_($breakpoint) {
+      grid-gap: map.get(variables.$default-gutter, $breakpoint);
+      grid-template-columns: repeat(
+        map.get(variables.$default-device, $breakpoint),
+        minmax(0, 1fr)
+      );
+    }
+  }
 }

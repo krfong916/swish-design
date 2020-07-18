@@ -1,0 +1,64 @@
+@use './variables';
+@use "sass:map";
+@use "sass:list";
+@use "sass:meta";
+
+// compute the minimum breakpoint value and return it
+@function get-min-breakpoint($size) {
+  @if not(map.get(variables.$breakpoints, $size)) {
+    @warn "Warning: Breakpoint value: #{$size} not defined in breakpoint map. Please specify a breakpoint size defined in the breakpoint map";
+  }
+
+  // get the minimum breakpoint for the screen size
+  $min: map.get(variables.$breakpoints, $size);
+  @return if($min > 0, $min, null);
+}
+
+// compute the upperbound breakpoint and return it
+// put another way: given an array of numbers and a value ($size)
+// return the smallest number $size is less than
+@function get-max-breakpoint($size) {
+  // get a list of screen size names
+  $names: map.keys(variables.$breakpoints);
+  // get the index for this particular screen size
+  $index: list.index($names, $size);
+  // using the index, determine the max breakpoint for the screen size
+  // edge case: either we currently have the largest screen size and there exists no max-width
+  // general case: the max-width is the nearest largest breakpoint
+  $max: if(
+    $index - 1 >= 1,
+    list.nth(list.nth(variables.$breakpoints, $index - 1), 2) - 1,
+    null
+  );
+  @return $max;
+}
+
+@mixin media-query_($size) {
+  // based on the size of the screen, get the min and max-width breakpoint
+  $minBreakpoint: get-min-breakpoint($size);
+  $maxBreakpoint: get-max-breakpoint($size);
+
+  @debug "for #{$size}, the min-width is: #{$minBreakpoint} the max-width is: #{$maxBreakpoint}";
+
+  // largest screen size
+  @if ($minBreakpoint != null and $maxBreakpoint == null) {
+    @media (min-width: #{$minBreakpoint}) {
+      @content;
+    }
+    // intermediate screen size
+  } @else if ($minBreakpoint != null and $maxBreakpoint != null) {
+    @media (min-width: #{$minBreakpoint}) {
+      @media (max-width: #{$maxBreakpoint}) {
+        @content;
+      }
+    }
+    // smallest screen size
+  } @else if ($minBreakpoint == null and $maxBreakpoint != null) {
+    @media (max-width: #{$maxBreakpoint}) {
+      @content;
+    }
+    // no breakpoints for the screen size type
+  } @else {
+    @content;
+  }
+}

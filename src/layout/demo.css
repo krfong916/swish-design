@@ -12,16 +12,6 @@
   border: 1px solid #23abc2;
 }
 
-.demo-grid {
-  display: grid;
-  grid-gap: 24px;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  outline: 2px solid black;
-}
-
-.demo-grid-row {
-}
-
 #span-4 {
   grid-column-start: span 4;
 }
@@ -29,3 +19,33 @@
 #placement-8 {
   grid-column-start: 8;
 }
+/*
+/*phone*/
+/*@media (min-width: 0px) and (max-width: 599px) {
+  .demo-grid {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    outline: 2px solid black;
+  }
+}*/
+
+/*tablet*/
+/*@media (min-width: 600px) and (max-width: 839px) {
+  .demo-grid {
+    display: grid;
+    grid-gap: 16px;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+    outline: 2px solid black;
+  }
+}*/
+
+/*desktop*/
+/*@media (min-width: 840px) {
+  .demo-grid {
+    display: grid;
+    grid-gap: 24px;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    outline: 2px solid black;
+  }
+}*/
