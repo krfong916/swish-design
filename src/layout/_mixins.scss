@@ -38,8 +38,6 @@
   $minBreakpoint: get-min-breakpoint($size);
   $maxBreakpoint: get-max-breakpoint($size);
 
-  @debug "for #{$size}, the min-width is: #{$minBreakpoint} the max-width is: #{$maxBreakpoint}";
-
   // largest screen size
   @if ($minBreakpoint != null and $maxBreakpoint == null) {
     @media (min-width: #{$minBreakpoint}) {
@@ -61,4 +59,33 @@
   } @else {
     @content;
   }
+}
+
+@mixin layout-grid($size, $margin) {
+  @if (not map.has-key(variables.$default-device, $size)) {
+    @warn "Warning: the user-specified screen size: #{$size} is not a screen-size supported by Swish Grid. Please use a screen-size defined in the variables map";
+  }
+
+  margin: 0 auto;
+  padding: $margin;
+}
+
+@mixin layout-inner($size, $gutter) {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  margin: -1 * $gutter; // we use a negative margin to pull the inner-layout into the grid itself
+
+  @supports (display: grid) {
+    display: grid;
+    grid-gap: $gutter;
+    grid-template-columns: repeat(
+      map.get(variables.$default-device, $size),
+      minmax(0, 1fr)
+    );
+    margin: -1 * $gutter; // we use a negative margin to pull the inner-layout into the grid itself
+  }
+}
+
+@mixin inner-cell() {
 }

@@ -1,13 +1,4 @@
-.demo-flex-grid {
-  display: flex;
-  flex-direction: row;
-  /*flex-wrap: wrap;*/
-  outline: 2px solid black;
-}
-
-.demo-flex-row {
-  /*flex-basis: 100%;*/
-  flex-grow: 1;
+.sdc-grid-row {
   height: 20px;
   border: 1px solid #23abc2;
 }
