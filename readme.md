@@ -7,28 +7,44 @@ The component library for Swish Design System
 
 ## Todo
 
-- [ ] loader
-- [ ] button
-- [ ] layout
-- [ ] pagination
-- [ ] popover
-- [ ] with-hover
-- [ ] menu
-- [ ] fonts
-- [ ] icons
-- [ ] tables
-- [ ] homepage and structured usage
-- [ ] tabs
+### Sequence 1 - EOAugust
+
+- [ ] layout (grid, container, box)
+- [ ] color
+- [ ] typography
+- [ ] button (disabled)
+- [ ] pagination (rounded pagination, table pagination)
+- [ ] card (with collapse)
+
+### Sequence 2 - EOSeptember
+
+- [ ] accordion (and checkbox for consent)
+- [ ] form
+- [ ] popover (hover and positions)
+- [ ] skeleton
+- [ ] snack
+
+### Sequence 3 - EOOctober
+
+- [ ] timeline
+- [ ] icon
+- [ ] progress (interactive, linear determinate)
 - [ ] tooltip
 - [ ] with-align
+
+### To get to
+
+- [ ] calendar
+- [ ] tables
+- [ ] tabs
 - [ ] tag
 - [ ] avatar
-- [ ] modal
 
 ## Components Completed
 
 - [x] toggle
 - [x] switch
+- [x] loader
 
 ## Product Backlog
 
