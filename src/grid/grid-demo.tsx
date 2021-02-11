@@ -1,3 +1,9 @@
 import React from "react";
-import Grid from "./Grid";
-export const GridDemo: React.SFC = () => <Grid />;
+import Grid from "./index";
+export const GridDemo: React.FC = () => {
+  return (
+    <Grid>
+      <div></div>
+    </Grid>
+  );
+};

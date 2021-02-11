@@ -8,17 +8,23 @@ type GridProps = {
   xl?: number;
   alignment?: string;
   children?: React.ReactNode;
+  display?: string;
 };
 
 export default class Grid extends React.Component<GridProps, {}> {
   render() {
     return (
       <div>
-        <div style={{ display: "flex" }}>{this.props.children}</div>
+        <div style={{}}>{this.props.children}</div>
       </div>
     );
   }
 }
+
+// why specify a number for sizes? xs, sm, md, etc.
+// specifies the number of columns?
+
+// allow grid and flexbox?
 
 /*
 order
