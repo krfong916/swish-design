@@ -1,3 +1,12 @@
+the layout, border radius, typography, and color combined are the shoe lasts of web products
+The silhouette creates relation
+
+- is what I'm looking at new? modern? Are there any gimmicks?
+- is it no-nonsense? Do I expect everything to just work? (blog and forums)
+
+A modern, no gimmicks message message board
+Control is better - no infinite scroll
+
 Design System Lifecycle
 
 Accessibility should be a part of your process
