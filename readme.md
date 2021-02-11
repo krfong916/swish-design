@@ -5,48 +5,9 @@
 
 The component library for Swish Design System
 
-## Todo
+## How to run
 
-### Sequence 1 - EOAugust
-
-- [ ] layout (grid, container, box)
-- [ ] color
-- [ ] typography
-- [ ] button (disabled)
-- [ ] pagination (rounded pagination, table pagination)
-- [ ] card (with collapse)
-
-### Sequence 2 - EOSeptember
-
-- [ ] accordion (and checkbox for consent)
-- [ ] form
-- [ ] popover (hover and positions)
-- [ ] skeleton
-- [ ] snack
-
-### Sequence 3 - EOOctober
-
-- [ ] timeline
-- [ ] icon
-- [ ] progress (interactive, linear determinate)
-- [ ] tooltip
-- [ ] with-align
-
-### To get to
-
-- [ ] calendar
-- [ ] tables
-- [ ] tabs
-- [ ] tag
-- [ ] avatar
-
-## Components Completed
-
-- [x] toggle
-- [x] switch
-- [x] loader
-
-## Product Backlog
-
-- [ ] switch with labels
-- [ ] disabled state and styling
+- To start: `npm start`
+- To test: `npm test`
+- To update dependencies: `npm update`
+- To revert an update to dependencies: use previous version of package-lock.json
