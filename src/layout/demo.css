@@ -3,8 +3,15 @@ span {
   word-wrap: break-word;
 }
 .sdc-grid {
+  background: #91d5ff;
+}
+
+.sdc-grid-inner {
+  /*border: 1px solid*/
 }
 
 .sdc-grid-col {
-  border: 1px solid #23abc2;
+  height: 60px;
+  background: #e6f7ff;
+  opacity: 0.75;
 }

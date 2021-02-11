@@ -1,0 +1,16 @@
+- position
+  - center
+  - top
+  - bottom
+- starting column
+  - what happens if an element is already on that column space?
+- gutter size
+
+- Container
+  - composed of 12 columns
+- Row
+  - it's width is 12 columns
+- Element
+  - placed on a row
+  - the element's width can be one to 12 columns
+  - what happens if we have overflow of elements? how can we resize the row, and expect good behavior from the surrounding container?

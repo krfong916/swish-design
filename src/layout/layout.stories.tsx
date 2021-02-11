@@ -5,5 +5,5 @@ export default { title: "Layout" };
 export const Layout: React.FC = () => <LayoutDemo />;
 
 Layout.story = {
-  name: "Responsive Grid",
+  name: "Responsive Layout",
 };
