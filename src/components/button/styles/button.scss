@@ -27,7 +27,7 @@ $btn-letter-spacing: 0.03em;
   text-transform: uppercase;
 
   & > span {
-    font-weight: 400;
+    font-weight: 500;
     white-space: nowrap;
     text-align: center;
     transition: color ease 0.2s;
@@ -55,14 +55,13 @@ $btn-letter-spacing: 0.03em;
   */
 
   &--default {
-    background-color: $blue-6;
-    border-color: $blue-6;
+    background-color: $gray-1;
+    border-color: $gray-6;
     transition: $btn-transition;
-    color: $gray-1;
+    color: $gray-12;
 
     &:hover {
-      background-color: $blue-8;
-      border-color: $blue-8;
+      background-color: $gray-3;
       transition: $btn-transition;
     }
   }

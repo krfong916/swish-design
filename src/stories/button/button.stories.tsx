@@ -4,16 +4,44 @@ import "../../../global/global-style.css";
 import "./button-stories.scss";
 export default { title: "Button" };
 
-export const Primary = () => (
+export const ButtonSizes = () => (
   <div className="btn-container">
-    <Button size="small" type="primary" className="app-presentation">
+    <Button size="small" color="primary" className="app-presentation">
       <span>Small</span>
     </Button>
-    <Button size="medium" type="primary" className="app-presentation">
+    <Button color="primary" className="app-presentation">
       <span>Medium</span>
     </Button>
-    <Button size="large" type="primary" className="app-presentation">
+    <Button size="large" color="primary" className="app-presentation">
       <span>Large</span>
+    </Button>
+  </div>
+);
+
+export const ButtonColors = () => (
+  <div className="btn-container">
+    <Button color="default" className="app-presentation">
+      <span>Default</span>
+    </Button>
+    <Button color="primary" className="app-presentation">
+      <span>Primary</span>
+    </Button>
+    <Button color="secondary" className="app-presentation">
+      <span>Secondary</span>
+    </Button>
+  </div>
+);
+
+export const ButtonVariations = () => (
+  <div className="btn-container">
+    <Button type="default" className="app-presentation">
+      <span>Default</span>
+    </Button>
+    <Button type="outlined" className="app-presentation">
+      <span>Primary</span>
+    </Button>
+    <Button type="disabled" className="app-presentation">
+      <span>Secondary</span>
     </Button>
   </div>
 );

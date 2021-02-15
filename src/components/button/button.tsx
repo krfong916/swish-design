@@ -13,7 +13,7 @@ export interface ButtonProps {
   type?: ButtonType;
   disabled?: boolean;
   tabIndex?: number;
-  onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
   className?: string;
   children?: React.ReactNode;
   href?: string;
@@ -43,7 +43,7 @@ const Button = (props: ButtonProps) => {
     className,
   );
 
-  const handleClick = (e: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (onClick) {
       e.preventDefault();
       onClick(e);
@@ -54,7 +54,7 @@ const Button = (props: ButtonProps) => {
     <button
       aria-disabled={disabled}
       className={btnClass}
-      onClick={(e: React.MouseEvent<HTMLElement>) => handleClick(e)}
+      onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => handleClick}
       tabIndex={tabIndex}
       {...otherProps}
     >
