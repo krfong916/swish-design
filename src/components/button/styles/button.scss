@@ -14,7 +14,6 @@ $btn-letter-spacing: 0.03em;
                default button styles and secondary
 ################
 */
-
 .swish-btn {
   display: inline-flex;
   align-items: center;
@@ -53,7 +52,6 @@ $btn-letter-spacing: 0.03em;
                  default
   ################
   */
-
   &--default {
     background-color: $gray-1;
     border-color: $gray-6;
@@ -61,7 +59,7 @@ $btn-letter-spacing: 0.03em;
     color: $gray-12;
 
     &:hover {
-      background-color: $gray-3;
+      background-color: $gray-4;
       transition: $btn-transition;
     }
   }
@@ -71,7 +69,6 @@ $btn-letter-spacing: 0.03em;
                  primary
   ################
   */
-
   &--primary {
     background-color: $blue-6;
     border-color: $blue-6;
@@ -87,10 +84,27 @@ $btn-letter-spacing: 0.03em;
 
   /*
   ################
+                 secondary
+  ################
+  */
+  &--secondary {
+    background-color: $red-6;
+    border-color: $red-6;
+    color: $gray-1;
+    transition: $btn-transition;
+
+    &:hover {
+      background-color: $red-8;
+      transition: $btn-transition;
+      border-color: $red-8;
+    }
+  }
+
+  /*
+  ################
                  disabled
   ################
   */
-
   &--disabled {
     background-color: #e8e8e8;
     border-color: #bfbfbf;
