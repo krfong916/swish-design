@@ -1,23 +1,23 @@
 const path = require("path");
 module.exports = {
-  stories: ["../src/**/*.stories.tsx", "../src/**/*.stories.js"],
-  addons: [
-    "@storybook/addon-a11y",
-    "@storybook/addon-actions",
-    "@storybook/addon-knobs",
-    "@storybook/addon-storysource",
-    {
-      name: "@storybook/addon-docs",
-      options: {
-        configureJSX: true,
-      },
-    },
-  ],
+  stories: ["../src/stories/**/*.stories.tsx"],
+  // addons: [
+  //   "@storybook/addon-actions",
+  //   "@storybook/addon-knobs",
+  //   "@storybook/addon-storysource",
+  //   {
+  //     name: "@storybook/addon-docs",
+  //     options: {
+  //       configureJSX: true,
+  //     },
+  //   },
+  // ],
   webpackFinal: async config => {
     config.module.rules.push(
       {
         test: /\.(ts|tsx)$/,
         include: path.resolve(__dirname, "../src"),
+        exclude: [path.resolve(__dirname, "../node_modules")],
         use: [
           require.resolve("ts-loader"),
           {
@@ -30,8 +30,9 @@ module.exports = {
         ],
       },
       {
-        test: /\.scss$/,
+        test: /\.s[ac]ss$/i,
         include: path.resolve(__dirname, "../src"),
+        exclude: path.resolve(__dirname, "../node_modules"),
         use: ["style-loader", "css-loader", "sass-loader"],
       },
     );

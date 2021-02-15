@@ -3,23 +3,19 @@
     "outDir": "build/lib",
     "module": "commonjs",
     "target": "es5",
-    "lib": ["es5", "es6", "es7", "es2017", "dom"],
+    "allowJs": true,
+    "sourceMap": true,
     "jsx": "react",
     "moduleResolution": "node",
-    "sourceMap": true,
-    "allowJs": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
+    "strictNullChecks": false,
+    "isolatedModules": true,
+    "esModuleInterop": true,
     "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
     "declaration": true,
-    "alwaysStrict": true,
-    "esModuleInterop": true
+    "strict": true,
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
-  "include": ["src/**/*"],
-  "exclude": ["src/**/example/*", "src/**/case-analysis/*"]
+  "include": ["src/**/*", ".storybook/**/*"],
+  "exclude": ["src/**/example/*", "src/**/case-analysis/*", "node_modules"]
 }

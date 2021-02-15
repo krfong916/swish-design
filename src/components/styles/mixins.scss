@@ -1,0 +1,4 @@
+@function pxToRem($px, $global-font) {
+  $size: $px / $global-font;
+  @return #{$size}rem;
+}
