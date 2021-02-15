@@ -3,8 +3,8 @@ import classNames from "classnames";
 import { noop } from "../../util";
 import "./styles/button.scss";
 
-export type ButtonColor = "default" | "primary" | "secondary";
-export type ButtonType = "default" | "outlined" | "disabled";
+export type ButtonColor = "default" | "primary" | "secondary" | "disabled";
+export type ButtonType = "contained" | "outlined" | "disabled";
 export type ButtonSize = "small" | "medium" | "large";
 
 export interface ButtonProps {
@@ -23,7 +23,7 @@ const Button = (props: ButtonProps) => {
   const {
     size = "medium",
     color = "default",
-    type = "default",
+    type = "contained",
     tabIndex = 0,
     className,
     children,
@@ -36,7 +36,7 @@ const Button = (props: ButtonProps) => {
   let btnClass = classNames(
     {
       "swish-btn": true,
-      [`swish-btn--${color}`]: true,
+      [`swish-btn--${type}--${color}`]: true,
       [`swish-btn--${size}`]: true,
       "swish-btn--disabled": disabled,
     },
