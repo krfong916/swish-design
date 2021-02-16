@@ -28,7 +28,7 @@
     "test": "jest --config ./jest.config.js",
     "test:watch": "jest --watch --config ./jest.config.js --runInBand",
     "test:cover": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
-    "format": "prettier --write \"src/**/*.+(js|css|json)\""
+    "format": "prettier --write \"src/**/*.+(ts|tsx|js|css|json)\""
   },
   "husky": {
     "hooks": {
@@ -36,7 +36,7 @@
     }
   },
   "lint-staged": {
-    "./src/**/*.+(js|json)": [
+    "./src/**/*.+(ts|tsx|js|json)": [
       "prettier --write",
       "git add"
     ]
