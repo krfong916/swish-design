@@ -54,7 +54,12 @@ export const Outlined = () => (
     <Button type="outlined" color="primary" className="app-presentation">
       <span>Primary</span>
     </Button>
-    <Button type="outlined" color="secondary" className="app-presentation">
+    <Button
+      type="outlined"
+      color="secondary"
+      onKeyDown={() => console.log("pressed")}
+      className="app-presentation"
+    >
       <span>Secondary</span>
     </Button>
     <Button

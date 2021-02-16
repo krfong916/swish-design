@@ -13,7 +13,8 @@ export interface ButtonProps {
   type?: ButtonType;
   disabled?: boolean;
   tabIndex?: number;
-  onClick?: (e: React.MouseEvent<HTMLElement, MouseEvent>) => void;
+  onClick?: (e: any) => void;
+  onKeyDown?: (e: any) => void;
   className?: string;
   children?: React.ReactNode;
   href?: string;
@@ -28,6 +29,7 @@ const Button = (props: ButtonProps) => {
     className,
     children,
     onClick,
+    onKeyDown,
     disabled = false,
     href,
     ...otherProps
@@ -46,19 +48,27 @@ const Button = (props: ButtonProps) => {
   );
 
   const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    if (onClick) {
+    if (onClick && !disabled) {
       e.preventDefault();
       onClick(e);
     }
   };
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
+    if (e.keyCode == 32 || e.keyCode == 13) {
+      e.stopPropagation();
+      onKeyDown(e);
+    }
+  };
+
   if (href) {
+    if (disabled) href = "javascript:void(0)";
     return (
       <a
         tabIndex={tabIndex}
         href={href}
         className={btnClass}
-        onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => handleClick}
+        onClick={handleClick}
       >
         {children}
       </a>
@@ -69,7 +79,8 @@ const Button = (props: ButtonProps) => {
     <button
       aria-disabled={disabled}
       className={btnClass}
-      onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => handleClick}
+      onClick={handleClick}
+      onKeyDown={handleKeyDown}
       tabIndex={tabIndex}
       {...otherProps}
     >

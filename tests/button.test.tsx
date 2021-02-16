@@ -6,8 +6,20 @@ import Button from "../src/components/button/button";
 afterEach(cleanup);
 
 describe("Button", () => {
-  test("Renders, yay!", async () => {
-    await render(<Button />);
+  test("Renders, yay!", () => {
+    render(<Button />);
+  });
+
+  test("User is able to render children", () => {
+    render(
+      <Button>
+        <span>Little Baby Test</span>
+      </Button>,
+    );
+    const testChildRender = screen.getByRole("button", {
+      name: /Little Baby Test/i,
+    });
+    expect(testChildRender).toBeDefined();
   });
 
   test("Specify size type as a property, get a different-sized button structurally", () => {
@@ -23,8 +35,6 @@ describe("Button", () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  test("User is able to render children", () => {});
-
   test("Button can be used as a link", () => {
     render(
       <Button href="https://www.youtube.com/results?search_query=jr+swish" />,
@@ -32,16 +42,25 @@ describe("Button", () => {
     expect(
       screen
         .getByRole("link")
-        .toHaveAttribute(
+        .hasAttributes(
           "href",
           "https://www.youtube.com/results?search_query=jr+swish",
         ),
     );
   });
 
-  test("User unable to interact with button when button is disabled", () => {
-    render(<Button href="" disabled={true} />);
+  test("Button responds to spacebar keypress event", () => {
+    const keyDown = jest.fn();
+    render(<Button onKeyDown={keyDown} />);
+    const button = screen.getByRole("button");
+    userEvent.type(button, "{space}");
+    expect(keyDown).toHaveBeenCalledTimes(1);
   });
 
-  test("User is able to apply other props to our component", function() {});
+  test("User unable to interact with button when button is disabled", () => {
+    const onClick = jest.fn();
+    const { getByRole } = render(<Button onClick={onClick} disabled={true} />);
+    userEvent.click(screen.getByRole("button"));
+    expect(onClick).toHaveBeenCalledTimes(0);
+  });
 });
