@@ -3,16 +3,15 @@ node_js:
   - 11
 
 cache:
-  yarn: true
+  npm: true
   directories:
     - node_modules
 
 install:
-  - yarn install
+  - npm i
 
 script:
-  - yarn test 
+  - npm run test
 
 after_script:
-  - COVERALLS_REPO_TOKEN=$coveralls_repo_token yarn test:cover
-
+  - COVERALLS_REPO_TOKEN=$coveralls_repo_token npm run test:cover
