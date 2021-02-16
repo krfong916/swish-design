@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/krfong916/swish-components.svg?branch=master)](https://travis-ci.com/krfong916/swish-components)
+[![Build Status](https://travis-ci.com/krfong916/swish-components.svg?branch=main)](https://travis-ci.com/krfong916/swish-components)
 [![Coverage Status](https://coveralls.io/repos/github/krfong916/swish-components/badge.svg?branch=main)](https://coveralls.io/github/krfong916/swish-components?branch=main)
 
 # Swish Components
