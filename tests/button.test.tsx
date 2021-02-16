@@ -39,14 +39,7 @@ describe("Button", () => {
     render(
       <Button href="https://www.youtube.com/results?search_query=jr+swish" />,
     );
-    expect(
-      screen
-        .getByRole("link")
-        .hasAttributes(
-          "href",
-          "https://www.youtube.com/results?search_query=jr+swish",
-        ),
-    );
+    expect(screen.getByRole("link")).toHaveAttribute("href");
   });
 
   test("Button responds to spacebar keypress event", () => {

@@ -7,6 +7,8 @@ module.exports = {
     "**/?(*.)+(spec|test).+(ts|tsx|js)",
   ],
 
+  setupFilesAfterEnv: ["@testing-library/jest-dom/extend-expect"],
+
   // The package 'identity-obj-proxy assumes that our css modules contain an object with css classnames,
   // it doesn't support ability to export values and constants
   // We use 'jest-transform-css' because our scss files will get transpiled into js
