@@ -20,7 +20,7 @@ export interface ButtonProps {
 }
 
 const Button = (props: ButtonProps) => {
-  const {
+  let {
     size = "medium",
     color = "default",
     type = "contained",
@@ -28,24 +28,22 @@ const Button = (props: ButtonProps) => {
     className,
     children,
     onClick,
-    disabled,
+    disabled = false,
+    href,
     ...otherProps
   } = props;
 
-  let btnClass = disabled
-    ? classNames({
-        "swish-btn": true,
-        [`swish-btn--${size}`]: true,
-        [`swish-btn--${type}--disabled`]: true,
-      })
-    : classNames(
-        {
-          "swish-btn": true,
-          [`swish-btn--${type}--${color}`]: true,
-          [`swish-btn--${size}`]: true,
-        },
-        className,
-      );
+  tabIndex = disabled ? -1 : tabIndex;
+
+  let btnClass = classNames(
+    {
+      "s-btn": true,
+      [`s-btn-${size}`]: true,
+      [`s-btn-${type}-disabled`]: disabled,
+      [`s-btn-${type}-${color}`]: disabled == false ? true : false,
+    },
+    className,
+  );
 
   const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (onClick) {
@@ -53,6 +51,19 @@ const Button = (props: ButtonProps) => {
       onClick(e);
     }
   };
+
+  if (href) {
+    return (
+      <a
+        tabIndex={tabIndex}
+        href={href}
+        className={btnClass}
+        onClick={(e: React.MouseEvent<HTMLElement, MouseEvent>) => handleClick}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
     <button

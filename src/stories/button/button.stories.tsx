@@ -15,6 +15,9 @@ export const Sizes = () => (
     <Button size="large" color="primary" className="app-presentation">
       <span>Large</span>
     </Button>
+    <Button size="large" color="primary" href="#" className="app-presentation">
+      <span>Link</span>
+    </Button>
   </div>
 );
 
@@ -32,6 +35,14 @@ export const Contained = () => (
     <Button type="contained" disabled={true} className="app-presentation">
       <span>Disabled</span>
     </Button>
+    <Button
+      type="contained"
+      color="primary"
+      href="#"
+      className="app-presentation"
+    >
+      <span>Link</span>
+    </Button>
   </div>
 );
 
@@ -48,11 +59,19 @@ export const Outlined = () => (
     </Button>
     <Button
       type="outlined"
-      color="default"
+      color="primary"
       disabled={true}
       className="app-presentation"
     >
       <span>Disabled</span>
+    </Button>
+    <Button
+      type="outlined"
+      color="primary"
+      href="#"
+      className="app-presentation"
+    >
+      <span>Link</span>
     </Button>
   </div>
 );
@@ -70,6 +89,14 @@ export const Text = () => (
     </Button>
     <Button type="text" disabled={true} className="app-presentation">
       <span>Disabled</span>
+    </Button>
+    <Button
+      type="text"
+      color="primary"
+      href="https://www.youtube.com/results?search_query=jr+swish"
+      className="app-presentation"
+    >
+      <span>Link</span>
     </Button>
   </div>
 );
