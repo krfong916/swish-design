@@ -92,7 +92,7 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
   box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
   border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-// Borders
+// Button border
 .btn-border {
   border-radius: $border-radius;
   border: 1px solid $gray-6;
@@ -144,6 +144,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transition: $btn-transition;
     color: $btn-outlined-text-default;
 
+    &:focus {
+      background-color: $btn-outlined-background-default-hover;
+    }
     &:hover {
       background-color: $btn-outlined-background-default-hover;
       transition: $btn-transition;
@@ -157,6 +160,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transition: $btn-transition;
     color: $btn-outlined-text-primary;
 
+    &:focus {
+      background-color: $btn-outlined-background-hover-primary;
+    }
     &:hover {
       background-color: $btn-outlined-background-hover-primary;
       border-color: $btn-outlined-border-hover-primary;
@@ -171,6 +177,10 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transition: $btn-transition;
     color: $btn-outlined-text-secondary;
 
+    &:focus {
+      background-color: $btn-outlined-background-secondary-hover;
+      border-color: $btn-outlined-border-secondary-hover;
+    }
     &:hover {
       background-color: $btn-outlined-background-secondary-hover;
       border-color: $btn-outlined-border-secondary-hover;
@@ -198,6 +208,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-contained-color-default;
     transition: $btn-transition;
 
+    &:focus {
+      background-color: $btn-contained-background-hover-default;
+    }
     &:hover {
       background-color: $btn-contained-background-hover-default;
       transition: $btn-transition;
@@ -211,6 +224,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transition: $btn-transition;
     color: $btn-contained-text-primary;
 
+    &:focus {
+      background-color: $btn-contained-background-hover-primary;
+    }
     &:hover {
       background-color: $btn-contained-background-hover-primary;
       border-color: $btn-contained-border-hover-primary;
@@ -225,6 +241,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-contained-text-secondary;
     transition: $btn-transition;
 
+    &:focus {
+      background-color: $btn-contained-background-hover-secondary;
+    }
     &:hover {
       background-color: $btn-contained-background-hover-secondary;
       transition: $btn-transition;
@@ -249,6 +268,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     @extend .text;
     color: $btn-text-color-default;
     transition: $btn-transition;
+    &:focus {
+      background-color: $btn-text-background-hover-default;
+    }
     &:hover {
       background-color: $btn-text-background-hover-default;
       transition: $btn-transition;
@@ -259,6 +281,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     @extend .text;
     color: $btn-text-color-primary;
     transition: $btn-transition;
+    &:focus {
+      background-color: $btn-text-background-hover-primary;
+    }
     &:hover {
       background-color: $btn-text-background-hover-primary;
       transition: $btn-transition;
@@ -269,9 +294,12 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     @extend .text;
     color: $btn-text-color-secondary;
     transition: $btn-transition;
-    &:hover {
-      transition: $btn-transition;
+    &:focus {
       background-color: $btn-text-background-hover-secondary;
+    }
+    &:hover {
+      background-color: $btn-text-background-hover-secondary;
+      transition: $btn-transition;
     }
   }
 
