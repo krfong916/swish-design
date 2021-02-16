@@ -4,7 +4,7 @@ import "../../../global/global-style.css";
 import "./button-stories.scss";
 export default { title: "Button" };
 
-export const ButtonSizes = () => (
+export const Sizes = () => (
   <div className="btn-container">
     <Button size="small" color="primary" className="app-presentation">
       <span>Small</span>
@@ -18,21 +18,24 @@ export const ButtonSizes = () => (
   </div>
 );
 
-export const ButtonColors = () => (
+export const Contained = () => (
   <div className="btn-container">
-    <Button color="default" className="app-presentation">
+    <Button type="contained" color="default" className="app-presentation">
       <span>Default</span>
     </Button>
-    <Button color="primary" className="app-presentation">
+    <Button type="contained" color="primary" className="app-presentation">
       <span>Primary</span>
     </Button>
-    <Button color="secondary" className="app-presentation">
+    <Button type="contained" color="secondary" className="app-presentation">
       <span>Secondary</span>
+    </Button>
+    <Button type="contained" disabled={true} className="app-presentation">
+      <span>Disabled</span>
     </Button>
   </div>
 );
 
-export const ButtonVariations = () => (
+export const Outlined = () => (
   <div className="btn-container">
     <Button type="outlined" color="default" className="app-presentation">
       <span>Default</span>
@@ -43,7 +46,29 @@ export const ButtonVariations = () => (
     <Button type="outlined" color="secondary" className="app-presentation">
       <span>Secondary</span>
     </Button>
-    <Button type="outlined" color="disabled" className="app-presentation">
+    <Button
+      type="outlined"
+      color="default"
+      disabled={true}
+      className="app-presentation"
+    >
+      <span>Disabled</span>
+    </Button>
+  </div>
+);
+
+export const Text = () => (
+  <div className="btn-container">
+    <Button type="text" color="default" className="app-presentation">
+      <span>Default</span>
+    </Button>
+    <Button type="text" color="primary" className="app-presentation">
+      <span>Primary</span>
+    </Button>
+    <Button type="text" color="secondary" className="app-presentation">
+      <span>Secondary</span>
+    </Button>
+    <Button type="text" disabled={true} className="app-presentation">
       <span>Disabled</span>
     </Button>
   </div>

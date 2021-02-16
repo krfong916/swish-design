@@ -3,37 +3,100 @@
 
 $swish-btn-namespace: "swish-btn" !default;
 
+/*
+################
+               contained
+################
+*/
 // background
-$btn-background-default: $gray-1;
-$btn-background-primary: $blue-6;
-$btn-background-primary: $red-6;
-$btn-background-disabled: $gray-3;
+$btn-contained-background-default: $gray-5;
+$btn-contained-background-primary: $blue-6;
+$btn-contained-background-secondary: $red-6;
 
-// borders
-$btn-border-default: $gray-6;
-$btn-border-primary: $blue-6;
-$btn-border-secondary: $red-6;
-
-// text
-$btn-text-default: $gray-10;
-$btn-text-primary: $blue-6;
-$btn-text-secondary: $red-6;
-$btn-text-disabled: $gray-6;
+// border
+$btn-contained-border-default: $gray-6;
+$btn-contained-border-primary: $blue-6;
+$btn-contained-border-secondary: $red-6;
+$btn-contained-background-disabled: $gray-5;
 
 // hover background
-$btn-background-outlined-default-hover: $gray-3;
-$btn-background-outlined-primary-hover: $blue-1;
-$btn-background-outlined-secondary-hover: $red-1;
+$btn-contained-background-hover-default: $gray-6;
+$btn-contained-background-hover-primary: $blue-7;
+$btn-contained-background-hover-secondary: $red-7;
 
 // hover border
-$btn-border-outlined-default-hover: $gray-6;
-$btn-border-outlined-primary-hover: $blue-6;
-$btn-border-outlined-secondary-hover: $red-6;
+$btn-contained-border-hover-primary: $blue-8;
+$btn-contained-border-hover-secondary: $red-8;
+
+// text
+$btn-contained-color-default: $gray-10;
+$btn-contained-text-primary: $gray-1;
+$btn-contained-text-secondary: $gray-1;
+$btn-contained-text-disabled: $gray-7;
+
+/*
+################
+               outlined
+################
+*/
+// background
+$btn-outlined-background-default: $gray-1;
+$btn-outlined-background-disabled: $gray-3;
+
+// borders
+$btn-outlined-border-default: $gray-6;
+$btn-outlined-border-primary: $blue-6;
+$btn-outlined-border-secondary: $red-6;
+$btn-outlined-border-disabled: $gray-6;
+
+// text
+$btn-outlined-text-default: $gray-10;
+$btn-outlined-text-primary: $blue-6;
+$btn-outlined-text-secondary: $red-6;
+$btn-outlined-text-disabled: $gray-7;
+
+// hover background
+$btn-outlined-background-default-hover: $gray-3;
+$btn-outlined-background-hover-primary: $blue-1;
+$btn-outlined-background-secondary-hover: $red-1;
+
+// hover border
+$btn-outlined-border-default-hover: $gray-6;
+$btn-outlined-border-hover-primary: $blue-6;
+$btn-outlined-border-secondary-hover: $red-6;
+
+/*
+################
+               text
+################
+*/
+.text {
+  border: none;
+  background: none;
+  border-radius: $border-radius;
+}
+
+// text
+$btn-text-color-default: $gray-10;
+$btn-text-color-primary: $blue-6;
+$btn-text-color-secondary: $red-6;
+$btn-text-color-disabled: $gray-7;
+
+// hover background
+$btn-text-background-hover-default: $gray-3;
+$btn-text-background-hover-primary: $blue-1;
+$btn-text-background-hover-secondary: $red-1;
 
 // Transition
 $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
   box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
   border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+// Borders
+.btn-border {
+  border-radius: $border-radius;
+  border: 1px solid $gray-6;
+}
 
 .#{$swish-btn-namespace} {
   /*
@@ -43,8 +106,6 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
   */
   display: inline-flex;
   align-items: center;
-  border-radius: $border-radius;
-  border: 1px solid $gray-6;
   cursor: pointer;
   outline: none;
   letter-spacing: 0.03em;
@@ -77,48 +138,52 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
   ################
   */
   &--outlined--default {
-    background-color: $btn-background-default;
-    border-color: $btn-border-default;
+    @extend .btn-border;
+    background-color: $btn-outlined-background-default;
+    border-color: $btn-outlined-border-default;
     transition: $btn-transition;
-    color: $btn-text-default;
+    color: $btn-outlined-text-default;
 
     &:hover {
-      background-color: $btn-background-outlined-default-hover;
+      background-color: $btn-outlined-background-default-hover;
       transition: $btn-transition;
     }
   }
 
   &--outlined--primary {
-    background-color: $btn-background-default;
-    border-color: $btn-border-primary;
+    @extend .btn-border;
+    background-color: $btn-outlined-background-default;
+    border-color: $btn-outlined-border-primary;
     transition: $btn-transition;
-    color: $btn-text-primary;
+    color: $btn-outlined-text-primary;
 
     &:hover {
-      background-color: $btn-background-outlined-primary-hover;
-      border-color: $btn-border-outlined-primary-hover;
+      background-color: $btn-outlined-background-hover-primary;
+      border-color: $btn-outlined-border-hover-primary;
       transition: $btn-transition;
     }
   }
 
   &--outlined--secondary {
-    background-color: $btn-background-default;
-    border-color: $btn-border-secondary;
+    @extend .btn-border;
+    background-color: $btn-outlined-background-default;
+    border-color: $btn-outlined-border-secondary;
     transition: $btn-transition;
-    color: $btn-text-secondary;
+    color: $btn-outlined-text-secondary;
 
     &:hover {
-      background-color: $btn-background-outlined-secondary-hover;
-      border-color: $btn-border-outlined-secondary-hover;
+      background-color: $btn-outlined-background-secondary-hover;
+      border-color: $btn-outlined-border-secondary-hover;
       transition: $btn-transition;
     }
   }
 
   &--outlined--disabled {
+    @extend .btn-border;
     cursor: not-allowed;
-    background-color: $btn-background-disabled;
-    border-color: $btn-border-default;
-    color: $btn-text-disabled;
+    background-color: $btn-outlined-background-disabled;
+    border-color: $btn-outlined-border-disabled;
+    color: $btn-outlined-text-disabled;
   }
 
   /*
@@ -126,46 +191,54 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
                  variation: contained
   ################
   */
-  // &--contained--default {
-  //   background-color: $btn-background-contained-default;
-  //   border-color: $btn-border-primary;
-  //   transition: $btn-transition;
-  //   color: $btn-text-primary;
+  &--contained--default {
+    @extend .btn-border;
+    background-color: $btn-contained-background-default;
+    border-color: $btn-contained-border-default;
+    color: $btn-contained-color-default;
+    transition: $btn-transition;
 
-  //   &:hover {
-  //     // background-color: ;
-  //     transition: $btn-transition;
-  //   }
-  // }
+    &:hover {
+      background-color: $btn-contained-background-hover-default;
+      transition: $btn-transition;
+    }
+  }
 
-  // &--contained--primary {
-  //   background-color: $blue-6;
-  //   border-color: $blue-6;
-  //   transition: $btn-transition;
-  //   color: $gray-1;
+  &--contained--primary {
+    @extend .btn-border;
+    background-color: $btn-contained-background-primary;
+    border-color: $btn-contained-border-primary;
+    transition: $btn-transition;
+    color: $btn-contained-text-primary;
 
-  //   &:hover {
-  //     background-color: $blue-8;
-  //     border-color: $blue-8;
-  //     transition: $btn-transition;
-  //   }
-  // }
+    &:hover {
+      background-color: $btn-contained-background-hover-primary;
+      border-color: $btn-contained-border-hover-primary;
+      transition: $btn-transition;
+    }
+  }
 
-  // &--contained--secondary {
-  //   background-color: $red-6;
-  //   border-color: $red-6;
-  //   color: $gray-1;
-  //   transition: $btn-transition;
+  &--contained--secondary {
+    @extend .btn-border;
+    background-color: $btn-contained-background-secondary;
+    border-color: $btn-contained-border-secondary;
+    color: $btn-contained-text-secondary;
+    transition: $btn-transition;
 
-  //   &:hover {
-  //     background-color: $red-8;
-  //     transition: $btn-transition;
-  //     border-color: $red-8;
-  //   }
-  // }
+    &:hover {
+      background-color: $btn-contained-background-hover-secondary;
+      transition: $btn-transition;
+      border-color: $btn-contained-border-hover-secondary;
+    }
+  }
 
-  // &--contained--disabled {
-  // }
+  &--contained--disabled {
+    @extend .btn-border;
+    cursor: not-allowed;
+    background-color: $btn-contained-background-disabled;
+    border: none;
+    color: $btn-contained-text-disabled;
+  }
 
   /*
   ################
@@ -173,42 +246,38 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
   ################
   */
   &--text--default {
+    @extend .text;
+    color: $btn-text-color-default;
+    transition: $btn-transition;
+    &:hover {
+      background-color: $btn-text-background-hover-default;
+      transition: $btn-transition;
+    }
   }
+
   &--text--primary {
+    @extend .text;
+    color: $btn-text-color-primary;
+    transition: $btn-transition;
+    &:hover {
+      background-color: $btn-text-background-hover-primary;
+      transition: $btn-transition;
+    }
   }
+
   &--text--secondary {
+    @extend .text;
+    color: $btn-text-color-secondary;
+    transition: $btn-transition;
+    &:hover {
+      transition: $btn-transition;
+      background-color: $btn-text-background-hover-secondary;
+    }
   }
+
   &--text--disabled {
-  }
-
-  /*
-  ################
-                 variation: disabled
-  ################
-  */
-  &--disabled {
-    background-color: #e8e8e8;
-    border-color: #bfbfbf;
+    @extend .text;
     cursor: not-allowed;
-  }
-
-  &--disabled:hover {
-    background-color: #e8e8e8;
-    border-color: #bfbfbf;
-  }
-
-  &--disabled > span {
-    color: #8c8c8c;
-  }
-
-  &--disabled:hover > span {
-    color: #8c8c8c;
-  }
-
-  & > span {
-    font-weight: 500;
-    white-space: nowrap;
-    text-align: center;
-    transition: color ease 0.2s;
+    color: $btn-text-color-disabled;
   }
 }

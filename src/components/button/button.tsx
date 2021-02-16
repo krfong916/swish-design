@@ -3,8 +3,8 @@ import classNames from "classnames";
 import { noop } from "../../util";
 import "./styles/button.scss";
 
-export type ButtonColor = "default" | "primary" | "secondary" | "disabled";
-export type ButtonType = "contained" | "outlined" | "disabled";
+export type ButtonColor = "default" | "primary" | "secondary";
+export type ButtonType = "contained" | "outlined" | "text";
 export type ButtonSize = "small" | "medium" | "large";
 
 export interface ButtonProps {
@@ -28,20 +28,24 @@ const Button = (props: ButtonProps) => {
     className,
     children,
     onClick,
+    disabled,
     ...otherProps
   } = props;
 
-  const disabled = type == "disabled" ? true : false;
-
-  let btnClass = classNames(
-    {
-      "swish-btn": true,
-      [`swish-btn--${type}--${color}`]: true,
-      [`swish-btn--${size}`]: true,
-      "swish-btn--disabled": disabled,
-    },
-    className,
-  );
+  let btnClass = disabled
+    ? classNames({
+        "swish-btn": true,
+        [`swish-btn--${size}`]: true,
+        [`swish-btn--${type}--disabled`]: true,
+      })
+    : classNames(
+        {
+          "swish-btn": true,
+          [`swish-btn--${type}--${color}`]: true,
+          [`swish-btn--${size}`]: true,
+        },
+        className,
+      );
 
   const handleClick = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
     if (onClick) {
