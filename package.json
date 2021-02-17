@@ -1,5 +1,5 @@
 {
-  "name": "Swish-Design",
+  "name": "swish-design",
   "title": "Swish Design",
   "description": "An enterprise-ready and accessible UI design library of React components",
   "version": "0.1.1",
@@ -102,5 +102,8 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "directories": {
+    "test": "tests"
   }
 }
