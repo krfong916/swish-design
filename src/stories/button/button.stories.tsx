@@ -2,7 +2,13 @@ import React from "react";
 import Button from "../../components/button/button";
 import "../../shared/global-style.css";
 import "./button-stories.scss";
-export default { title: "Button" };
+export default {
+  title: "Button",
+  component: Button,
+  parameters: {
+    componentSubtitle: "Button component for triggering user actions",
+  },
+};
 
 export const Sizes = () => (
   <div className="btn-container">
