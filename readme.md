@@ -24,9 +24,8 @@ To build storybook for static file hosting
 npm run build-storybook
 ```
 
-
 [build-badge]:
-  https://travis-ci.com/krfong916/swish-components.svg?branch=main
+  https://travis-ci.com/krfong916/swish-design.svg?branch=main
 [build]: https://travis-ci.com/krfong916/swish-design
 [coverage-badge]:
   https://coveralls.io/repos/github/krfong916/swish-components/badge.svg?branch=main
