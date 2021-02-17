@@ -1,17 +1,17 @@
 const path = require("path");
 module.exports = {
   stories: ["../src/stories/**/*.stories.tsx"],
-  // addons: [
-  //   "@storybook/addon-actions",
-  //   "@storybook/addon-knobs",
-  //   "@storybook/addon-storysource",
-  //   {
-  //     name: "@storybook/addon-docs",
-  //     options: {
-  //       configureJSX: true,
-  //     },
-  //   },
-  // ],
+  addons: [
+    "@storybook/addon-actions",
+    "@storybook/addon-knobs",
+    "@storybook/addon-storysource",
+    {
+      name: "@storybook/addon-docs",
+      options: {
+        configureJSX: true,
+      },
+    },
+  ],
   webpackFinal: async config => {
     config.module.rules.push(
       {

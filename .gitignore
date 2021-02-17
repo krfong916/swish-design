@@ -1,17 +1,14 @@
-# packages
+# dependencies
 node_modules
 
-.DS_Store
-
-# yarn
-yarn.lock
-yarn-error.log
-
-# coverage
+# testing
 coverage
 
-# folders
-src/*/example/*
-build/
+# production
+build
+
 # misc.
 .DS_Store
+dist
+.env
+src/*/example/*

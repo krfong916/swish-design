@@ -1,9 +1,7 @@
-[![Build Status](https://travis-ci.com/krfong916/swish-components.svg?branch=main)](https://travis-ci.com/krfong916/swish-components)
-[![Coverage Status](https://coveralls.io/repos/github/krfong916/swish-components/badge.svg?branch=main)](https://coveralls.io/github/krfong916/swish-components?branch=main)
+[![Build Status](https://travis-ci.com/krfong916/swish-components.svg?branch=main)](https://travis-ci.com/krfong916/swish-design)
+[![Coverage Status](https://coveralls.io/repos/github/krfong916/swish-components/badge.svg?branch=main)](https://coveralls.io/github/krfong916/swish-design?branch=main)
 
-# Swish Components
-
-The component library for Swish Design System
+# Swish Design
 
 ## How to run
 

@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "../../components/button/button";
-import "../../../global/global-style.css";
+import "../../shared/global-style.css";
 import "./button-stories.scss";
 export default { title: "Button" };
 

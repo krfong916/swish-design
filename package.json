@@ -1,8 +1,8 @@
 {
-  "name": "swishd",
+  "name": "Swish-Design",
   "title": "Swish Design",
   "description": "An enterprise-ready and accessible UI design library of React components",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "keywords": [
     "swish",
@@ -17,18 +17,21 @@
     "type": "git",
     "url": "https://github.com/swish-components"
   },
+  "author": "Kyle Fong",
   "bugs": {
     "url": "https://github.com/swish-components/issues"
   },
+  "homepage": "https://github.com/swish-components",
   "main": "build/lib/index.js",
   "scripts": {
-    "start": "npm run storybook",
-    "storybook": "start-storybook --quiet -p 6006 -c .storybook",
-    "build": "build-storybook --quiet -w -c .storybook",
+    "start": "start-storybook --quiet -p 6006 -c .storybook",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build": "rimraf dist && build-storybook -c .storybook -o dist",
     "test": "jest --config ./jest.config.js",
     "test:watch": "jest --watch --config ./jest.config.js --runInBand",
     "test:cover": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
-    "format": "prettier --write \"src/**/*.+(ts|tsx|js|css|scss|json)\""
+    "format": "prettier --write \"src/**/*.+(ts|tsx|js|css|scss|json)\"",
+    "build-storybook": "build-storybook -s public"
   },
   "husky": {
     "hooks": {
@@ -62,7 +65,9 @@
     "@testing-library/user-event": "^12.7.1",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^26.0.20",
+    "auto": "^10.16.5",
     "babel-loader": "^8.0.6",
+    "chromatic": "^5.6.2",
     "classnames": "^2.2.6",
     "coveralls": "^3.1.0",
     "css-loader": "^3.5.3",
@@ -83,6 +88,7 @@
     "prettier-eslint": "^9.0.2",
     "prettier-eslint-cli": "^5.0.0",
     "react-docgen-typescript-loader": "^3.7.2",
+    "rimraf": "^2.6.3",
     "sass": "^1.26.8",
     "sass-loader": "^8.0.2",
     "style-loader": "^1.2.1",

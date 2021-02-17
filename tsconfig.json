@@ -16,6 +16,6 @@
     "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
-  "include": ["src/**/*", ".storybook/**/*", "tests/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["src/**/example/*", "src/**/case-analysis/*", "node_modules"]
 }
