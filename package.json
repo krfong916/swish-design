@@ -31,7 +31,8 @@
     "test:watch": "jest --watch --config ./jest.config.js --runInBand",
     "test:cover": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
     "format": "prettier --write \"src/**/*.+(ts|tsx|js|css|scss|json)\"",
-    "build-storybook": "build-storybook -s public"
+    "build-storybook": "build-storybook -s public",
+    "release": "auto shipit --base-branch=main"  
   },
   "husky": {
     "hooks": {
