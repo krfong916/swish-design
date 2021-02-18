@@ -14,6 +14,9 @@ jobs:
     # this check needs to be in place to prevent a publish loop with auto and github actions
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')"
     # the list of steps that the action will go through
+    defaults:
+      run:
+        working-directory: src
     steps:
       - uses: actions/checkout@v2
       - name: Prepare repository
@@ -29,12 +32,11 @@ jobs:
           key: yarn-deps-${{ hashFiles('yarn.lock') }}
           restore-keys: |
             yarn-deps-${{ hashFiles('yarn.lock') }}
-
       - name: Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn install --frozen-lockfile
-          yarn build
+          yarn prepublish
           yarn release
