@@ -5,7 +5,7 @@
   "main": "dist/index.ts",
   "scripts": {
     "prepublish": "rimraf dist && webpack --color --mode=production",
-    "release": "auto shipit --base-branch=main"
+    "release": "auto shipit"
   },
   "author": "Swish Design Team",
   "license": "MIT",
