@@ -4,7 +4,9 @@ name: Release
 # the event that will trigger the action
 on:
   push:
-    branches: [main, release-worklow]
+    branches:
+      - main
+      - release-worklow
 
 # what the action will do
 jobs:
