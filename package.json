@@ -27,6 +27,7 @@
   "homepage": "https://github.com/swish-components",
   "main": "build/lib/index.js",
   "scripts": {
+    "bootstrap": "npx lerna bootstrap --hoist",
     "start": "start-storybook --quiet -p 6006 -c .storybook",
     "storybook": "start-storybook -p 6006 -s public",
     "build": "rimraf dist && build-storybook -c .storybook -o dist",

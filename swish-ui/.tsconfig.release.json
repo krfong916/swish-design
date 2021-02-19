@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "build/lib",
+    "outDir": "./dist/",
     "module": "commonjs",
     "target": "es5",
     "allowJs": true,
@@ -16,6 +16,6 @@
     "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
-  "include": ["swish-ui/"],
-  "exclude": ["src/**/example/*", "src/**/case-analysis/*", "node_modules"]
+  "include": ["components/**/*"],
+  "exclude": ["stories/*", "node_modules"]
 }

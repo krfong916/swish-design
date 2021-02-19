@@ -13,7 +13,6 @@ jobs:
     # the list of steps that the action will go through
     steps:
       - uses: actions/checkout@v1
-      - run: yarn
       - run: yarn test
       - run: yarn build-storybook
       - uses: chromaui/action@v1
