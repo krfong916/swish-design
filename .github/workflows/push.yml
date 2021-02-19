@@ -39,5 +39,5 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           yarn install --frozen-lockfile
-          yarn prepublish
+          yarn build
           yarn release

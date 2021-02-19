@@ -34,7 +34,8 @@
     "test:watch": "jest --watch --config ./jest.config.js --runInBand",
     "test:cover": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
     "format": "prettier --write \"src/**/*.+(ts|tsx|js|css|scss|json)\"",
-    "build-storybook": "build-storybook -o ./.storybook/static"
+    "clean": "rimraf swish-ui/package-lock.json && rimraf swish-ui/lib && rimraf swish-ui/node_modules && rimraf .storybook/static",
+    "build-storybook": "npm run clean && build-storybook -o ./.storybook/static"
   },
   "husky": {
     "hooks": {
