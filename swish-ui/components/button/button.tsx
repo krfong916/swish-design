@@ -1,6 +1,6 @@
 import React from "react";
 import classNames from "classnames";
-import { noop } from "../../shared/util";
+import { noop } from "../util";
 import "./styles/button.scss";
 
 export type ButtonColor = "default" | "primary" | "secondary";
