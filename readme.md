@@ -11,18 +11,24 @@
 
 Hi! 👋  From the Swish Design Team: Would you like to contribute to this design system? We're looking for individuals to help build this Design System together. Swish is certainly in its baby stages, but we're a firm-believer of its potential. There's lots to do and therefore == opportunities for high impact and experience 👍 Your presence and efforts are welcome here, regardless of experience level. See issues for contributing.
 
-## How to run
+## How To Contribute
 
 ```
-npm i swish-ui
-yarn add swish-ui 
+git clone https://github.com/krfong916/swish-design.git
 ```
 
-To build storybook for static file hosting
+## How To Use The UI Package
 
 ```
-npm run build-storybook
+npm i swish-design
 ```
+
+or if you're using yarn
+
+```
+yarn add swish-design
+```
+
 
 [build-badge]:
   https://travis-ci.com/krfong916/swish-design.svg?branch=main
