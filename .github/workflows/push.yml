@@ -6,7 +6,6 @@ on:
   push:
     branches:
       - main
-      - release-worklow
 
 # what the action will do
 jobs:

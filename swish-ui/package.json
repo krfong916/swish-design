@@ -15,7 +15,7 @@
   },
   "scripts": {
     "prepublish": "rimraf dist && webpack --color --mode=production",
-    "release": "auto shipit"
+    "release": "auto shipit --base-branch=main"
   },
   "devDependencies": {
     "@testing-library/dom": "^7.29.4",
