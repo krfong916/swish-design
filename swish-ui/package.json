@@ -1,12 +1,14 @@
 {
-  "name": "@swish-design/core",
-  "version": "0.1.1",
+  "name": "swish-design",
+  "title": "Swish Design",
   "description": "An enterprise-ready and accessible UI design library of React components",
-  "main": "dist/index.ts",
-  "author": "Swish Design Team",
+  "version": "0.1.1",
   "license": "MIT",
+  "main": "lib",
+  "types": "lib",
+  "author": "Swish Design Team",
   "files": [
-    "dist"
+    "lib"
   ],
   "repository": {
     "type": "git",
@@ -16,7 +18,7 @@
     "url": "https://github.com/krfong916/swish-design/issues"
   },
   "scripts": {
-    "prepublish": "rimraf dist && webpack --color --mode=production",
+    "build": "rimraf dist && webpack --color --mode=production",
     "release": "auto shipit --base-branch=main"
   },
   "devDependencies": {
@@ -60,5 +62,9 @@
     "classnames": "^2.2.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
+  },
+  "peerDependencies": {
+    "classnames": ">=2.2.6",
+    "react": ">=16.0.0"
   }
 }

@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "outDir": "./dist/",
-    "module": "commonjs",
-    "target": "es5",
+    "outDir": "lib",
+    "target": "es2015",
     "allowJs": true,
     "sourceMap": true,
     "jsx": "react",
@@ -16,6 +15,6 @@
     "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
-  "include": ["components/**/*"],
+  "include": ["components"],
   "exclude": ["node_modules"]
 }

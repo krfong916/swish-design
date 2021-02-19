@@ -1,10 +1,9 @@
 const path = require("path");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const webpack = require("webpack");
 
 module.exports = {
   entry: "./index.ts",
-  devtool: "inline-source-map",
+  devtool: "source-map",
   module: {
     rules: [
       {
@@ -25,7 +24,7 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         include: /components/,
         exclude: /node_modules/,
-        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
@@ -33,10 +32,9 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js"],
   },
   output: {
-    filename: "swish-design.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: "index.js",
+    path: path.resolve(__dirname, "lib"),
     libraryTarget: "commonjs2",
-    library: "swishDesign",
   },
-  plugins: [new MiniCssExtractPlugin(), new webpack.ProgressPlugin()],
+  plugins: [new webpack.ProgressPlugin()],
 };
