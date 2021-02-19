@@ -14,7 +14,7 @@
     "ui"
   ],
   "files": [
-    "swish-ui/dist"
+    "swish-ui/lib"
   ],
   "repository": {
     "type": "git",
