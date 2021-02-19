@@ -7,17 +7,7 @@
 [![Build Status][build-badge]][build]
 [![Coverage Status][coverage-badge]][coverage]
 
-## Contributing
-
-Hi! 👋  From the Swish Design Team: Would you like to contribute to this design system? We're looking for individuals to help build this Design System together. Swish is certainly in its baby stages, but we're a firm-believer of its potential. There's lots to do and therefore == opportunities for high impact and experience 👍 Your presence and efforts are welcome here, regardless of experience level. See issues for contributing.
-
-## How To Contribute
-
-```
-git clone https://github.com/krfong916/swish-design.git
-```
-
-## How To Use The UI Package
+## 📦 Install
 
 ```
 npm i swish-design
@@ -29,6 +19,21 @@ or if you're using yarn
 yarn add swish-design
 ```
 
+## 🔨 Usage
+
+```
+import { Button} from 'swish-design';
+
+const App = () => (
+  <>
+    <Button type="primary">PRESS ME</Button>
+  </>
+);
+```
+
+## Contributing
+
+Hi! 👋  From the Swish Design Team: Would you like to contribute to this design system? We're looking for individuals to help build this Design System together. Swish is certainly in its baby stages, but we're a firm-believer of its potential. There's lots to do and therefore == opportunities for high impact and experience 👍 Your presence and efforts are welcome here, regardless of experience level. See our wiki on contributing.
 
 [build-badge]:
   https://travis-ci.com/krfong916/swish-design.svg?branch=main
