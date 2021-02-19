@@ -1,3 +1,16 @@
+# v0.2.2 (Fri Feb 19 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Update readme.md ([@krfong916](https://github.com/krfong916))
+- Update README.md ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.1 (Fri Feb 19 2021)
 
 #### ⚠️ Pushed to `main`
