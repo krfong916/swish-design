@@ -17,5 +17,5 @@
   },
   "compileOnSave": true,
   "include": ["components/**/*"],
-  "exclude": ["stories/*", "node_modules"]
+  "exclude": ["node_modules"]
 }

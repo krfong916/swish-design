@@ -17,5 +17,5 @@
   },
   "compileOnSave": true,
   "include": ["swish-ui/"],
-  "exclude": ["src/**/example/*", "src/**/case-analysis/*", "node_modules"]
+  "exclude": ["node_modules"]
 }

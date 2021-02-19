@@ -1,6 +1,4 @@
 module.exports = {
-  // Given our root directory, jest will look within the src folder for files that match our regex glob
-  roots: ["<rootDir>/tests"],
   // Glob pattern matcher to discover .test and .spec .ts and .tsx files
   testMatch: [
     "**/__tests__/**/*.+(ts|tsx|js)",
