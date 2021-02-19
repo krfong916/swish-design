@@ -11,5 +11,6 @@ build
 # misc.
 .DS_Store
 dist
+lib
 .env
 src/*/example/*
