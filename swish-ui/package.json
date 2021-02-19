@@ -18,7 +18,7 @@
     "url": "https://github.com/krfong916/swish-design/issues"
   },
   "scripts": {
-    "build": "rimraf dist && webpack --color --mode=production",
+    "build": "rimraf lib && webpack --color --mode=production",
     "release": "auto shipit --base-branch=main"
   },
   "devDependencies": {
