@@ -21,12 +21,12 @@ yarn add swish-design
 
 ## 🔨 Usage
 
-```
+```jsx
 import { Button} from 'swish-design';
 
 const App = () => (
   <>
-    <Button type="primary">PRESS ME</Button>
+    <Button type="primary">Sick!</Button>
   </>
 );
 ```
