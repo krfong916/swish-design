@@ -9,7 +9,7 @@
 
 ## Contributing
 
-Hi! 👋  I'm Kyle. Would you like to contribute to this design system? I'm looking for individuals of all experience levels to help build this Design System together! Swish is certainly in its baby stages, but I'm a firm-believer of its potential. There's lots to do and therefore, opportunities for high impact and experience 👍 Your presence and efforts are welcome here. See issues for contributing.
+Hi! 👋  From the Swish Design Team: Would you like to contribute to this design system? We're looking for individuals to help build this Design System together. Swish is certainly in its baby stages, but we're a firm-believer of its potential. There's lots to do and therefore == opportunities for high impact and experience 👍 Your presence and efforts are welcome here, regardless of experience level. See issues for contributing.
 
 ## How to run
 
