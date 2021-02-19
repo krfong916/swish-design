@@ -5,7 +5,9 @@
   "main": "dist/index.ts",
   "author": "Swish Design Team",
   "license": "MIT",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/krfong916/swish-design.git"
@@ -24,6 +26,8 @@
     "@testing-library/user-event": "^12.7.1",
     "@types/classnames": "^2.2.11",
     "@types/jest": "^26.0.20",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.1",
     "css-loader": "^5.0.2",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^7.2.0",
@@ -42,6 +46,7 @@
     "prettier-eslint": "^12.0.0",
     "prettier-eslint-cli": "^5.0.0",
     "rimraf": "^3.0.2",
+    "sass": "^1.26.8",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
     "ts-jest": "^26.5.1",
