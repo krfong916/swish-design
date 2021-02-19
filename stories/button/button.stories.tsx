@@ -1,6 +1,6 @@
-import React from "react";
-import Button from "../../components/button/button";
-import "../../shared/global-style.css";
+import * as React from "react";
+import { Button } from "../../swish-ui/components/button/index";
+import "../shared/global-style.css";
 import "./button-stories.scss";
 export default {
   title: "Button",

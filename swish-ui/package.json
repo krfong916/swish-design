@@ -5,9 +5,7 @@
   "main": "dist/index.ts",
   "author": "Swish Design Team",
   "license": "MIT",
-  "files": [
-    "dist"
-  ],
+  "files": ["dist"],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/krfong916/swish-design.git"

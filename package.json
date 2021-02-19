@@ -14,7 +14,7 @@
     "ui"
   ],
   "files": [
-    "dist"
+    "swish-ui/dist"
   ],
   "repository": {
     "type": "git",
@@ -27,15 +27,14 @@
   "homepage": "https://github.com/swish-components",
   "main": "build/lib/index.js",
   "scripts": {
-    "bootstrap": "npx lerna bootstrap --hoist",
     "start": "start-storybook --quiet -p 6006 -c .storybook",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "start-storybook -p 6006",
     "build": "rimraf dist && build-storybook -c .storybook -o dist",
     "test": "jest --config ./jest.config.js",
     "test:watch": "jest --watch --config ./jest.config.js --runInBand",
     "test:cover": "jest --config ./jest.config.js --coverage && cat ./coverage/lcov.info | node_modules/.bin/coveralls",
     "format": "prettier --write \"src/**/*.+(ts|tsx|js|css|scss|json)\"",
-    "build-storybook": "build-storybook -s public -o ./.storybook/static"
+    "build-storybook": "build-storybook -o ./.storybook/static"
   },
   "husky": {
     "hooks": {

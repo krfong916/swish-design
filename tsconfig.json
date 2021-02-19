@@ -16,6 +16,6 @@
     "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
-  "include": ["swish-ui/"],
-  "exclude": ["node_modules"]
+  "include": ["swish-ui/components/**/*", "stories/**/*"],
+  "exclude": ["node_modules", "swish-ui/node_modules"]
 }
