@@ -1,6 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
-
+const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: "./index.ts",
   devtool: "source-map",
@@ -24,7 +24,7 @@ module.exports = {
         test: /\.s[ac]ss$/i,
         include: /components/,
         exclude: /node_modules/,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: [MiniCSSExtractPlugin.loader, "css-loader", "sass-loader"],
       },
     ],
   },
@@ -36,5 +36,5 @@ module.exports = {
     path: path.resolve(__dirname, "lib"),
     libraryTarget: "commonjs2",
   },
-  plugins: [new webpack.ProgressPlugin()],
+  plugins: [new MiniCSSExtractPlugin(), new webpack.ProgressPlugin()],
 };
