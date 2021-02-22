@@ -5,6 +5,7 @@
   "version": "0.1.1",
   "license": "MIT",
   "main": "lib",
+  "style": "lib/main.css",
   "types": "lib",
   "author": "Swish Design Team",
   "files": [
