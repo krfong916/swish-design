@@ -1,3 +1,16 @@
+# v0.2.5 (Mon Feb 22 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/krfong916/swish-design ([@krfong916](https://github.com/krfong916))
+- define style entrypoint for usage: importing package ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.4 (Sun Feb 21 2021)
 
 #### ⚠️ Pushed to `main`

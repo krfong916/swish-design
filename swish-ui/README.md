@@ -21,23 +21,53 @@ yarn add swish-design
 
 ## 🔨 Usage
 
-```jsx
-import { Button} from 'swish-design';
+Below demonstrates a simple example of using Swish in your application:
 
-const App = () => (
-  <>
-    <Button type="primary">Sick!</Button>
-  </>
-);
+```js
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Button } from 'swish-design';
+
+ReactDOM.render(
+  <Button type="primary">Sick!</Button>
+  document.getElementById('root');
+)
 ```
 
-## Contributing
+### Content-Security-Policy
 
-Hi! 👋  From the Swish Design Team: Would you like to contribute to this design system? We're looking for individuals to help build this Design System together. Swish is certainly in its baby stages, but we're a firm-believer of its potential. There's lots to do and therefore == opportunities for high impact and experience 👍 Your presence and efforts are welcome here, regardless of experience level. See our wiki on contributing.
+Some may be using this package with a strict Content-Security-Policy. Meaning, they cannot allow inline style tags to be injected into their document at runtime.
+If your Content-Security-Policy does not allow 'unsafe-inline', one possible solution is to use Swish like so
 
-[build-badge]:
-  https://travis-ci.com/krfong916/swish-design.svg?branch=main
+```
+// create a swishd.css file
+// within the swishd.css file
+@import 'swish-design';
+
+// in the entry point of your project
+import 'swishd.css';
+
+// or if you're using a single instance of a Swish component, import swishd.css within that file
+```
+
+## 🗺 Roadmap
+
+✅: Completed
+🛠️: Building
+📘: Todo
+
+| Component      | Status |
+| -------------- | ------ |
+| Button         | ✅     |
+| Input          | 🛠️     |
+| Tags           | 🛠️     |
+| Avatar         | 🛠️     |
+| Card           | 📘     |
+| Pagination     | 📘     |
+| Dropdown       | 📘     |
+| Checkbox Group | 📘     |
+
+[build-badge]: https://travis-ci.com/krfong916/swish-design.svg?branch=main
 [build]: https://travis-ci.com/krfong916/swish-design
-[coverage-badge]:
-  https://coveralls.io/repos/github/krfong916/swish-components/badge.svg?branch=main
+[coverage-badge]: https://coveralls.io/repos/github/krfong916/swish-components/badge.svg?branch=main
 [coverage]: https://coveralls.io/github/krfong916/swish-design?branch=main
