@@ -39,13 +39,15 @@ ReactDOM.render(
 Some may be using this package with a strict Content-Security-Policy. Meaning, they cannot allow inline style tags to be injected into their document at runtime.
 If your Content-Security-Policy does not allow 'unsafe-inline', one possible solution is to use Swish like so
 
+```css
+/* create a swishd.css file */
+/* within the swishd.css file */
+@import "swish-design";
 ```
-// create a swishd.css file
-// within the swishd.css file
-@import 'swish-design';
 
+```js
 // in the entry point of your project
-import 'swishd.css';
+import "swishd.css";
 
 // or if you're using a single instance of a Swish component, import swishd.css within that file
 ```
