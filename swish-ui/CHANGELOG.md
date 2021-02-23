@@ -1,3 +1,16 @@
+# v0.2.7 (Tue Feb 23 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'main' of https://github.com/krfong916/swish-design ([@krfong916](https://github.com/krfong916))
+- update readme.md ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.6 (Tue Feb 23 2021)
 
 #### ⚠️ Pushed to `main`
