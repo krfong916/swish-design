@@ -147,6 +147,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-outlined-text-default;
 
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-outlined-background-default-hover;
     }
     &:hover {
@@ -163,6 +166,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-outlined-text-primary;
 
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-outlined-background-hover-primary;
     }
     &:hover {
@@ -180,8 +186,11 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-outlined-text-secondary;
 
     &:focus {
-      background-color: $btn-outlined-background-secondary-hover;
+      box-shadow: 0 0 0 3px $blue-3;
       border-color: $btn-outlined-border-secondary-hover;
+    }
+    &:active {
+      background-color: $btn-outlined-background-secondary-hover;
     }
     &:hover {
       background-color: $btn-outlined-background-secondary-hover;
@@ -211,6 +220,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transition: $btn-transition;
 
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-contained-background-hover-default;
     }
     &:hover {
@@ -227,6 +239,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-contained-text-primary;
 
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-contained-background-hover-primary;
     }
     &:hover {
@@ -244,6 +259,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     transition: $btn-transition;
 
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-contained-background-hover-secondary;
     }
     &:hover {
@@ -271,6 +289,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-text-color-default;
     transition: $btn-transition;
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-text-background-hover-default;
     }
     &:hover {
@@ -284,6 +305,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-text-color-primary;
     transition: $btn-transition;
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-text-background-hover-primary;
     }
     &:hover {
@@ -297,6 +321,9 @@ $btn-transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     color: $btn-text-color-secondary;
     transition: $btn-transition;
     &:focus {
+      box-shadow: 0 0 0 3px $blue-3;
+    }
+    &:active {
       background-color: $btn-text-background-hover-secondary;
     }
     &:hover {
