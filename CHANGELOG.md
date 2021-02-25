@@ -1,3 +1,15 @@
+# v0.2.8 (Tue Feb 16 2021)
+
+- Defined collaboration and roadmap, implemented production-ready, fully functional button
+
+#### 🐛 Bug Fix
+
+- Handled onKeyDown event even if event handler is not specified
+
+#### ⚠️ Pushed to `main`
+
+- Implemented styling for modeling user interaction with Button
+
 # v0.1.1 (Tue Feb 16 2021)
 
 - Created beta version of Swish Design with 'Button'
