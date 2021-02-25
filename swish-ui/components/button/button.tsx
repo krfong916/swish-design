@@ -55,7 +55,7 @@ const Button = (props: ButtonProps) => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLElement>) => {
-    if (e.keyCode == 32 || e.keyCode == 13) {
+    if ((e.keyCode == 32 || e.keyCode == 13) && onKeyDown) {
       e.stopPropagation();
       onKeyDown(e);
     }
