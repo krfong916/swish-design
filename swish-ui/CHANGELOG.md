@@ -1,3 +1,17 @@
+# v0.2.9 (Thu Feb 25 2021)
+
+#### ⚠️ Pushed to `main`
+
+- v0.2.8 ([@krfong916](https://github.com/krfong916))
+- Merge branch 'main' of https://github.com/krfong916/swish-design ([@krfong916](https://github.com/krfong916))
+- clarify roadmap and add collaboration section ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.8 (Thu Feb 25 2021)
 
 #### 🐛 Bug Fix
