@@ -1,3 +1,15 @@
+# v0.2.8 (Thu Feb 25 2021)
+
+#### 🐛 Bug Fix
+
+- Button press focus fix [#18](https://github.com/krfong916/swish-design/pull/18) ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.7 (Tue Feb 23 2021)
 
 #### ⚠️ Pushed to `main`
