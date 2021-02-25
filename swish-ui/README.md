@@ -54,6 +54,8 @@ import "swishd.css";
 
 ## 🗺 Roadmap
 
+### v1.0
+
 ✅: Completed
 🛠️: Building
 📘: Todo
@@ -68,6 +70,61 @@ import "swishd.css";
 | Pagination     | 📘     |
 | Dropdown       | 📘     |
 | Checkbox Group | 📘     |
+
+Our first major release will contain the components listed above. We make minor releases in two week sprints. Components whose status is marked 🛠️ fall under the minor release.
+
+## Contributing to Swish
+
+To the reader, we feel you're more than welcome to contribute to this project. We'd be thankful for you. Please recognize that Swish is in its baby stages and does not have prototyped assets to aid development; therefore, your implementation of expressing user interaction (styling) will be a truly collaborative process with our team.
+
+### 🍴 Step 1. Fork
+
+In order to contribute to Swish Design, you need to fork this repo and develop on your local machine.
+
+```
+git clone https://github.com/krfong916/swish-design.git
+```
+
+If you aren't familiar with how to fork and clone repos, follow this [guide](https://help.github.com/en/github/getting-started-with-github/fork-a-repo)
+
+### 📚 Step 2. Run Storybook
+
+To run storybook, run
+
+```
+npm run storybook
+```
+
+or if you're using yarn
+
+```
+yarn storybook
+```
+
+And open your browser to `localhost:6006`
+
+### 💻 Step 3. Make Your Changes
+
+You can find specifications of features to implement and changes to make [here](https://github.com/krfong916/swish-design/issues). Create a new branch from `main` and implement your changes on that branch: `git checkout -b _branch__name__here_`.
+In addition to the tasks listed for the issue, here are some guidelines to consider when developing
+
+- Provide full test coverage
+- Meet accessibility guidelines
+- Prioritize readability and careful comments, rather than clever code and optimizations
+
+After you've completed every task, and are satisfied with your changes, submit a pull request!
+
+### 📄 Step 4. Submit a Pull Request
+
+Last 400m until the finish! At this step, please submit a pull request describing the changes you implemented, and any code that you'd like for us to pay special attention to. After reviewing together, even if your changes need further development, it's important to acknowledge that you're taking a step in the right direction. Once your pull request has been approved... merge that thang to the main branch!!
+
+### 😸🍾 Step 5. Celebrate!
+
+You are now a contributor to Swish and the open source community! We sincerely appreciate your efforts to make Swish a great project to use. We're one small project, and with your help, we're able to make the web a better place together.
+
+## 🎉👏 Contributors
+
+Once your changes are accepted we will add your name to the list of contributors!
 
 [build-badge]: https://travis-ci.com/krfong916/swish-design.svg?branch=main
 [build]: https://travis-ci.com/krfong916/swish-design
