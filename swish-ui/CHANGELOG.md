@@ -1,3 +1,15 @@
+# v0.2.11 (Sun Mar 21 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Add hit-counter badge ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.10 (Sun Mar 21 2021)
 
 #### ⚠️ Pushed to `main`
