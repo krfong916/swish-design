@@ -1,3 +1,15 @@
+# v0.2.10 (Sun Mar 21 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Add npm-package info-badge ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.9 (Thu Feb 25 2021)
 
 #### ⚠️ Pushed to `main`
