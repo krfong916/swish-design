@@ -7,6 +7,8 @@
 [![Build Status][build-badge]][build]
 [![Coverage Status][coverage-badge]][coverage]
 [![NPM Info][npm-info-badge]][npm-info]
+[![HitCount][hit-count-badge]][hit-count]
+
 
 ## 📦 Install
 
@@ -133,3 +135,5 @@ Once your changes are accepted we will add your name to the list of contributors
 [coverage]: https://coveralls.io/github/krfong916/swish-design?branch=main
 [npm-info-badge]: https://badge.fury.io/js/swish-design.svg 
 [npm-info]: https://badge.fury.io/js/swish-design
+[hit-count-badge]: http://hits.dwyl.com/krfong916/swish-design.svg
+[hit-count]: http://hits.dwyl.com/krfong916/swish-design
