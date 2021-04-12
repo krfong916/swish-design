@@ -1,0 +1,37 @@
+@import "../../styles/default.scss";
+@import "../../styles/mixins.scss";
+$swish-pin-input-namespace: "s-pin-input" !default;
+$swish-pin-input-field-namespace: "s-pin-input-field" !default;
+
+.#{$swish-pin-input-namespace} {
+  display: inline-flex;
+}
+
+.#{$swish-pin-input-field-namespace} {
+  text-align: center;
+  width: 84px;
+  height: 96px;
+  line-height: 56px;
+  font-size: 48px;
+  border: none;
+  &:focus {
+    outline: none !important;
+    border: 2px solid #000;
+  }
+  &:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+}
+
+.pin-input-field {
+  border: 1px solid $gray-7;
+  &:first-child {
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  &:not(:first-child) {
+    border-left: none;
+  }
+}
