@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect, useState, useContext } from "react";
 import classNames from "classnames";
 import "./styles/pinInput.scss";
 
@@ -12,52 +12,68 @@ export interface PinProps {
   onChange?: (e: any) => void;
 }
 
+function usePinContext() {
+  // use pin context to make sure that pin consumers are rendering with a pin parent
+}
+
 export const PinInput = (props: PinProps) => {
   const { type = "alphanumeric", children, onChange } = props;
 
   // we want custom, fine-grained control over how our input forms should work
   // we want to place focus on the next child
-  const [pinCode, setPinCode] = useState(Array(children.length).fill(""));
+  const [pinNumber, setPinNumber] = useState(Array(children.length).fill(""));
+  const [currentPin, setCurrentPin] = useState(0);
   const pinFields = useRef([]);
 
-  // after the first render, focus the first pin field
   useEffect(() => {
-    pinFields.current[0].focus();
-  }, []);
+    // every component re-render, focus on the first pin-input
+    // we don't expect the user to refresh the page
+    pinFields.current[currentPin].focus();
+  }, [currentPin]);
 
   const updatePin = (value: string, childId: number) => {
-    pinCode[childId] = value;
-    const newPinCode = pinCode.reduce((newPinCode, current) => {
-      if (current) {
-        return newPinCode + current;
-      } else {
-        return newPinCode;
-      }
+    pinNumber[childId] = value;
+    const newPinNumber = pinNumber.reduce((newPinNumber, current) => {
+      if (current) return newPinNumber + current;
+      return newPinNumber;
     }, "");
-    console.log(newPinCode);
 
-    setPinCode(pinCode);
-    // 1. focus management
-    // 2. updating our state: don't change the state if we don't have any updates to make
-    // so we don't trigger any unnecessary re-renders (backspaces and typing the same character in the same box)
+    console.log(pinNumber);
 
-    // 3. execute onChange callback when state changes
-    // 4. call onCompletedInput()
-    // 5. focus error
-    // 6. error message
-    // --> screams control props - because we have to allow the user manage our state
-    // 7. error message to user if they don't specify pinFields
+    setPinNumber(pinNumber);
 
-    // if (result == code.length) {
-    //   onCompletedInput()
-    // }
-    // const newPinCode = pinCode
-    // setPinCode()
+    const newCurrentPin =
+      childId == children.length - 1 ? childId : childId + 1;
+    setCurrentPin(newCurrentPin);
+    console.log(newCurrentPin);
   };
+
+  // -> we're going to watch for
+  // how to check initial render and all other re-renders
+  // avoid unnecessary re-renders
+  // signs for creating a custom hook
+  // anything else that we find interesting
+
+  // 1. focus management
+  // 2. updating our state: don't change the state if we don't have any updates to make
+  // so we don't trigger any unnecessary re-renders (backspaces and typing the same character in the same box)
+
+  // 3. execute onChange callback when state changes
+  // 4. call onCompletedInput()
+  // 5. focus error
+  // 6. error message
+  // --> screams control props - because we have to allow the user manage our state
+  // 7. error message to user if they don't specify pinFields
+
+  // if (result == pinNumber.length) {
+  //   onCompletedInput()
+  // }
+  // const newPinNumber = pinNumber
+  // setPinNumber()
 
   const clonedChildren = React.Children.map(children, (child, index) => {
     return React.cloneElement(child, {
-      updatePin,
+      updatePin: updatePin,
       type,
       childId: index,
       ref: (ref: any) => (pinFields.current[index] = ref),
@@ -68,7 +84,11 @@ export const PinInput = (props: PinProps) => {
 };
 
 const BACKSPACE = 8;
-export interface PinFieldProps {}
+export interface PinFieldProps {
+  updatePin: (value: string, childId: number) => void;
+  type: PinType;
+  childId: number;
+}
 
 /**
  * @desc PinField is an input element that accepts a single character
@@ -78,24 +98,25 @@ export interface PinFieldProps {}
  * Note: type parameters have the opposite ordering
  */
 export const PinField = React.forwardRef<HTMLInputElement, PinFieldProps>(
-  (props: any, ref: any) => {
+  (props: PinFieldProps, ref: any) => {
+    const { childId } = props;
     const [value, setValue] = useState("");
     const [renderCount, setRenderCount] = useState(-1);
 
     const handlePinChange = (e: React.KeyboardEvent<HTMLInputElement>) => {
       const { value: initialValue } = e.currentTarget;
-      const childId = e.currentTarget.getAttribute("childid");
+      const childId = e.currentTarget.getAttribute("child-id");
       const key = e.keyCode;
       let newInputValue = e.key;
 
       if (key == BACKSPACE) {
         newInputValue = "";
-        props.updatePin(newInputValue, childId);
+        props.updatePin(newInputValue, parseInt(childId));
         setValue(newInputValue);
       }
 
       if (isValidInput(props.type, newInputValue)) {
-        props.updatePin(newInputValue, childId);
+        props.updatePin(newInputValue, parseInt(childId));
         setValue(newInputValue);
       }
     };
@@ -107,7 +128,7 @@ export const PinField = React.forwardRef<HTMLInputElement, PinFieldProps>(
           onKeyDown={handlePinChange}
           className="s-pin-input-field"
           ref={ref}
-          {...props}
+          child-id={childId}
         />
       </div>
     );
@@ -121,9 +142,9 @@ function isValidInput(type: PinType, value: string): boolean {
 
   if (!value.match(letterOrNumber)) return false;
   if (numbersOnly && value.match(letter)) return false;
-  // the value is either number or letter &&
-  // the user has allowed alphanumeric input ||
-  // the value is a number and the user only allows a number
+  // here, we know the the value is not a special character &&
+  // the user has allowed either alphanumeric input and value is alpha ||
+  // the user only allows a numeric and value is numeric
   return true;
 }
 
