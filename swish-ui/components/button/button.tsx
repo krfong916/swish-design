@@ -20,7 +20,12 @@ export interface ButtonProps {
   href?: string;
 }
 
-const Button = (props: ButtonProps) => {
+/* Fed up with this fuckery, if someone wants to fix the type error to shut the compiler up I'm all for it */
+/* It's a non-critical error however. Remove :any from the ref arg and you'll see the issue */
+const Button = React.forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  ButtonProps
+>((props, ref: any) => {
   let {
     size = "medium",
     color = "default",
@@ -65,6 +70,7 @@ const Button = (props: ButtonProps) => {
     if (disabled) href = "javascript:void(0)";
     return (
       <a
+        ref={ref}
         tabIndex={tabIndex}
         href={href}
         className={btnClass}
@@ -77,6 +83,7 @@ const Button = (props: ButtonProps) => {
 
   return (
     <button
+      ref={ref}
       aria-disabled={disabled}
       className={btnClass}
       onClick={handleClick}
@@ -87,6 +94,6 @@ const Button = (props: ButtonProps) => {
       {children}
     </button>
   );
-};
+});
 
 export default Button;

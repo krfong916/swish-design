@@ -56,4 +56,28 @@ describe("Button", () => {
     userEvent.click(screen.getByRole("button"));
     expect(onClick).toHaveBeenCalledTimes(0);
   });
+
+  test("We can directly reference the HTML Button when Button component is nested in the DOM structure", () => {
+    render(<RenderNested />);
+    const button = screen.getByRole("button");
+    expect(button).toHaveFocus();
+  });
 });
+
+function RenderNested() {
+  const buttonRef = React.useRef<HTMLButtonElement | HTMLAnchorElement | null>(
+    null,
+  );
+  React.useEffect(() => {
+    buttonRef.current.focus();
+  });
+  return (
+    <div>
+      <ul>
+        <li>
+          <Button ref={buttonRef} />
+        </li>
+      </ul>
+    </div>
+  );
+}

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button } from "../../swish-ui/components/button/index";
+import { Button } from "../../swish-ui";
 import "../shared/global-style.css";
 import "./button-stories.scss";
 export default {
