@@ -13,9 +13,10 @@ export default {
 export const PinInput = () => {
   return (
     <div className="pin-container">
-      <Pin type="numeric">
+      <Pin type="numeric" onChange={val => console.log(val)}>
         <PinField />
         <PinField />
+
         <PinField />
         <PinField />
         <PinField />
