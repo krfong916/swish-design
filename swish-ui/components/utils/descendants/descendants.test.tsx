@@ -1,70 +1,106 @@
+/**
+Hi! Welcome to Swish UI
+
+In this file, we're testing the behavior of the descendants module
+
+We recognize the setup for this test may obscure the test's intentions,
+
+please be mindful that the top-level component is declaring Provider context, and consumers are subscribing to that context.
+*/
+
 import * as React from "react";
-import { Button } from "../../button";
-import { render, screen } from "@testing-library/react";
-import {
-  createDescendantContext,
-  DescendantProvider,
-  useDescendantsInit,
-  useDescendant,
-  Descendant,
-} from "./index";
+// import { Button } from "../../button";
+// import { render, screen, fireEvent } from "@testing-library/react";
+// import userEvent from "@testing-library/user-event";
+// import {
+//   DescendantProvider,
+//   useDescendants,
+//   useDescendant,
+//   Descendant,
+//   createDescendantContext,
+// } from "./index";
+// import { createNamedContext } from "../createNamedContext";
 
-type ListDescendant = Descendant & {
-  disabled?: boolean;
-};
+// intersection type: combine descendant type with properties of an accordion descendant
+// type AccordionDescendant = Descendant & {
+//   focused?: boolean;
+//   disabled?: boolean;
+// };
 
-const listItemsContext = createDescendantContext<ListDescendant>(
-  "listItemsContext",
-);
+// const AccordionDescendantContext = createDescendantContext<AccordionDescendant>(
+//   "AccordionDescendantContext",
+// );
 
-function renderWithProviders(ui: React.ReactElement) {
-  const Wrapper = ({ children }: { children?: React.ReactNode }) => {
-    const [descendants, setDescendants] = useDescendantsInit<ListDescendant>();
+// type AccordionItem = {
+//   prop?: boolean;
+// };
+// const initAccordionItem = {} as AccordionItem;
+// const AccordionItemContext = createNamedContext<AccordionItem>(
+//   "AccordionItemContext",
+//   initAccordionItem,
+// );
 
-    return (
-      <DescendantProvider
-        context={listItemsContext}
-        setDescendants={setDescendants}
-        descendants={descendants}
-      >
-        {children}
-      </DescendantProvider>
-    );
-  };
-  return render(ui, { wrapper: Wrapper });
-}
+// function Accordion({ children }: { children: React.ReactNode }) {
+//   const autoFocus: boolean = true;
+//   const [descendants, setDescendants] = useDescendants<AccordionDescendant>();
 
-const List: React.FC = () => {
-  return (
-    <ol>
-      <ListItem />
-      <div>
-        <ListItem />
-      </div>
-      <ListItem />
-    </ol>
-  );
-};
+//   return (
+//     <DescendantProvider
+//       setDescendants={setDescendants}
+//       context={AccordionDescendantContext}
+//       descendants={descendants}
+//     >
+//       <AccordionItemContext.Provider value={null}>
+//         {children}
+//       </AccordionItemContext.Provider>
+//     </DescendantProvider>
+//   );
+// }
 
-const ListItem: React.FC = () => {
-  return (
-    <li>
-      <Button />
-    </li>
-  );
-  // const buttonRef = React.useRef<HTMLButtonElement | null>(null)
-  // useDescendant(buttonRef, listItemsContext)
-  // return(<li><Button ref={buttonRef}/></li>)
-};
+// function AccordionItem({ children }: { children: React.ReactNode }) {
+//   return <div>{children}</div>;
+// }
+
+// function AccordionButton({ children }: { children: React.ReactNode }) {
+//   return <button>{children}</button>;
+// }
+
+// function AccordionPanel({ children }: { children: React.ReactNode }) {
+//   return <div>{children}</div>;
+// }
 
 describe("Descendants Context API", () => {
-  test("context has a unique name", () => {
-    renderWithProviders(<List />);
+  /** 
+  This is all that we're testing
+
+  focus on the first accordion item
+
+  hit tab
+
+  focus on the next accordion item
+  */
+  test("focuses on the next element", () => {
+    //   const { container, getByText } = render(
+    //     <Accordion>
+    //       <AccordionItem>
+    //         <h2>
+    //           <AccordionButton>First section</AccordionButton>
+    //         </h2>
+    //         <AccordionPanel>Panel 1</AccordionPanel>
+    //       </AccordionItem>
+    //       <AccordionItem>
+    //         <h2>
+    //           <AccordionButton>Second section</AccordionButton>
+    //         </h2>
+    //         <AccordionPanel>Panel 2</AccordionPanel>
+    //       </AccordionItem>
+    //     </Accordion>,
+    //   );
+    //   const first = getByText("First section");
+    //   const second = getByText("Second section");
+    //   first.focus();
+    //   expect(first).toHaveFocus();
+    //   userEvent.tab();
+    //   expect(second).toHaveFocus();
   });
-
-  test("returns the index of the next descendant", () => {});
-
-  test("gets the list of all descendants", () => {});
-
-  test("removes descendant from the list", () => {});
 });

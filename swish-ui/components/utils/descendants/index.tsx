@@ -1,16 +1,32 @@
-// returns the correct index of the element
-// focuses on the next descendant
 import * as React from "react";
 import { createNamedContext } from "../createNamedContext";
 
 /**
- * Defines the Descendant object
- * @type {Descendant}
- */
-export type Descendant = {
-  element: HTMLElement;
-  // index?: number;
-  // focus?: boolean;
+SomeElement is a generic type
+
+GenericType extends HTMLElement describes the relationship test
+
+If the type GenericType is assignable to the type HTMLElement
+
+select HTMLElement; otherwise select the type Element
+
+In order to make the resulting type no longer generic,
+
+Specify the type parameter to use it as a type of a value
+*/
+type SomeElement<GenericType> = GenericType extends Element
+  ? GenericType
+  : Element;
+
+/**
+The default type for ElementType is HTMLElement
+
+A descendant is of some element type - we don't know exactly what
+
+@type {Descendant} the base descendant type
+*/
+export type Descendant<ElementType = HTMLElement> = {
+  element: SomeElement<ElementType>;
 };
 
 /**
@@ -18,180 +34,216 @@ export type Descendant = {
  * @type {DescendantType} The type is explicitly defined in the calling component
  */
 export interface DescendantContext<DescendantType extends Descendant> {
-  register: (descendant: Descendant) => void;
-  unregister: (element: HTMLElement) => void;
-  descendants: Descendant[];
+  subscribe: (d: DescendantType) => void;
+  unsubscribe: (d: DescendantType) => void;
+  descendants: DescendantType[];
 }
 
-/**
- * Creates the descendant context for the top-level calling component
- * createNamedContext calls the createContext hook
- * with the default value and Descendant Context object
- * @param {name} display name
- * @param {defaultValue} any default values
- * @return {React.Context<InferredType>} Descendant Context for the calling component
- */
+const noop = () => {};
+
+// name the context that we are creating
 export function createDescendantContext<DescendantType extends Descendant>(
-  name = "",
-  defaultValue = {},
+  name: string,
 ) {
-  type T = DescendantContext<DescendantType>;
-  const descendants: Descendant[] = [];
-  return createNamedContext<T>(name, {
-    register: () => {},
-    unregister: () => {},
+  const descendants: DescendantType[] = [];
+  const contextValue = {
+    subscribe: noop,
+    unsubscribe: noop,
     descendants,
-    ...defaultValue,
-  });
+  } as DescendantContext<DescendantType>; // type this object, b/c we want to know what kind of object this is
+  return createNamedContext(name, contextValue);
 }
 
 /**
- * Returns the array of descendants and a setter function to enable addition of descendants
- */
-export function useDescendantsInit<DescendantType>() {
+Creates the descendants list for the current context
+*/
+export function useDescendants<DescendantType>() {
   return React.useState<DescendantType[]>([]);
 }
 
 /**
- * Creates a Provider for the top-level component
- * The Descendant Provider contains state of the descendants and functions to update that state
- * Expect the Provider to be called when the state of a descendant changes
- */
+Creates a stateful pub/sub object for the top-level component to manage
+
+This function implements the ideas of the Provider pattern at its core
+
+Contains state of the descendants and functions to update that state
+*/
 export function DescendantProvider<DescendantType extends Descendant>({
-  context: Context,
   setDescendants,
+  context: Context,
   descendants,
   children,
 }: {
-  context: React.Context<DescendantContext<DescendantType>>;
   setDescendants: React.Dispatch<React.SetStateAction<DescendantType[]>>;
   descendants: DescendantType[];
+  context: React.Context<DescendantContext<DescendantType>>;
   children: React.ReactNode;
 }) {
-  /**
-   * register is a wrapper for setDescendants (setState hook)
-   * the useCallback hook is used here because the top-level component will often re-render due to state change
-   * however, the configuration of descendants will not need to re-render.
-   * When the descendants list changes i.e. unregister, we will re-render
-   *
-   * Experiment: remove use callback and see how it affects rendering
-   */
-  const register = React.useCallback(element => {
-    setDescendants((previousDescendantsState: DescendantType[]) => {
-      let newDescendantsState: DescendantType[];
+  // we are missing the ability to add extra props, such as focusable and disabled
+  // the arguments and typings will need to change
+  let subscribe = React.useCallback(({ element, ...props }: DescendantType) => {
+    if (!element) return;
+    setDescendants(prevDescendants => {
+      let newDescendants: DescendantType[];
+      let immutable = [...prevDescendants];
 
-      // if the list is empty, add the new descendant
-      if (newDescendantsState.length === 0) {
-        newDescendantsState = [
-          ...newDescendantsState,
-          { element } as DescendantType,
-        ];
-      } else if (
-        // if the element already exists in the list of descendants, return the original list
-        newDescendantsState.find(descendant => descendant.element === element)
-      ) {
-        newDescendantsState = previousDescendantsState;
-      } else {
-        // we know the element does not exist in the list of descendants
-        // compare the element with all *other* *Nodes in the document !important*
-        // get the index that it appears in the n-ary tree
-        const index = newDescendantsState.findIndex(descendant => {
-          return Boolean(
-            descendant.element.compareDocumentPosition(element) &
-              Node.DOCUMENT_POSITION_PRECEDING,
-          );
-        });
-        const curr = { element } as DescendantType;
-        // append the element to the end
-        if (index === -1) {
-          newDescendantsState = [...newDescendantsState, curr];
-        } else {
-          // insert the element in-place
-          newDescendantsState = [
-            ...newDescendantsState.slice(0, index),
-            curr,
-            ...newDescendantsState.slice(index, newDescendantsState.length),
-          ];
-        }
+      // if empty: append
+      if (immutable.length === 0) {
+        newDescendants = append(element, props, prevDescendants);
       }
 
-      return newDescendantsState;
+      // if element exists: copy
+      else if (immutable.find(desc => desc.element === element)) {
+        newDescendants = prevDescendants;
+      }
+
+      // insert in relative order: in-place or append
+      else {
+        newDescendants = insert(element, props, prevDescendants);
+      }
+
+      return newDescendants;
     });
   }, []);
 
-  const unregister = React.useCallback(element => {
-    setDescendants((previousDescendantsState: DescendantType[]) => {
-      let newDescendantsState = [...previousDescendantsState];
-      // return the list of descendants without the element specified
-      return newDescendantsState.filter(d => d.element !== element);
-    });
-  }, []);
+  let unsubscribe = React.useCallback(
+    ({ element }: { element: DescendantType["element"] }) => {
+      if (!element) {
+        return;
+      }
+
+      setDescendants(prevDescendants =>
+        prevDescendants.filter(desc => desc.element !== element),
+      );
+    },
+    [],
+  );
 
   return (
     <Context.Provider
-      value={{
-        register,
-        unregister,
-        descendants,
-      }}
+      value={React.useMemo(() => {
+        return {
+          subscribe,
+          unsubscribe,
+          descendants,
+        };
+      }, [subscribe, descendants, unsubscribe])}
     >
       {children}
     </Context.Provider>
   );
 }
 
+/**
+Registers the element as a descendant
+
+@return {number} returns an index the descendant occurs in the list of descendants
+*/
 export function useDescendant<DescendantType extends Descendant>(
-  element: HTMLElement | null,
+  descendant: DescendantType,
   context: React.Context<DescendantContext<DescendantType>>,
 ) {
-  // throw error if we cannot find a matching context (did you forget to render etc.?)
-  const { register, unregister, descendants } = React.useContext(context);
+  const { subscribe, unsubscribe, descendants } = React.useContext(context);
+  const forceUpdate = useForceUpdate();
+  const index = descendants.findIndex(
+    desc => desc.element === descendant.element,
+  );
+
+  // area of concern - do we need useLayoutEffect and why? see server-side rendering and force update
+  React.useLayoutEffect(() => {
+    if (!descendant.element) {
+      forceUpdate();
+    }
+    subscribe(descendant);
+    return () => unsubscribe(descendant);
+  }, [
+    index,
+    forceUpdate,
+    subscribe,
+    unsubscribe,
+    ...Object.values(descendant),
+  ]);
+
+  return index;
 }
 
-//   context: Context,
-//   setFn,
-//   descendants,
-//   children
-// }: {
-//   context: React.Context<{}>;
-//   // make the type of react dispatch action as an extendable descendant type
-//   setFn: React.Dispatch<React.SetStateAction<Descendant[]>>;
-//   descendants: Descendant[];
-//   children: React.ReactNode
-// }) {
-//   let register = (element: HTMLElement, index?: number) => {
-//     // if the element does not have a position amongst other descendants
+export function getDescendants<DescendantType extends Descendant>(
+  context: React.Context<DescendantContext<DescendantType>>,
+) {
+  const { descendants } = React.useContext(context);
+  return descendants;
+}
 
-//     // if the element is the right-most descendant in the n-ary tree of descendants
-//     // append the element to the list of descendants
-//     if (!index || index > descendants.length) {
-//       descendants.push({ element, index, focus: false });
-//     } else {
-//       console.log("other condition");
-//     }
-//   };
+/**
+ * Utility Methods for useDescendants
+ * It's down here, because it ain't pretty for reading up there, haha
+ */
+function append<DescendantType extends Descendant>(
+  element: DescendantType["element"],
+  props: {},
+  prevDescendants: DescendantType[],
+) {
+  return [
+    ...prevDescendants,
+    {
+      element,
+      ...props,
+    } as DescendantType,
+  ];
+}
 
-//   let unregister = () => {};
+function insert<DescendantType extends Descendant>(
+  element: DescendantType["element"],
+  props: {},
+  prevDescendants: DescendantType[],
+) {
+  let newDescendants: DescendantType[];
+  let index = getIndex(element, prevDescendants);
 
-//   return (
-//     <Context.Provider
-//       value={React.useMemo(
-//         () => ({
-//           register,
-//           unregister,
-//         }),
-//         [],
-//       )}
-//     ></Context.Provider>
-//   );
-// }
+  const currDescendant = { element, ...props } as DescendantType;
 
-// export function useDescendant(context) : number {
-//   const {register, unregister} = React.useContext(context)
-//   let index
-//   return index
-// }
+  if (index === -1) {
+    // the element appears at the relative end of the n-ary tree of descendants
+    newDescendants = [...prevDescendants, currDescendant];
+  } else {
+    // insert in place
+    newDescendants = [
+      ...prevDescendants.slice(0, index),
+      currDescendant,
+      ...prevDescendants.slice(index, prevDescendants.length),
+    ];
+  }
+  return newDescendants;
+}
 
-// export function useDescendantsInit() {
-//   return React.useState<Descendant[]>([]);
-// }
+function getIndex<DescendantType extends Descendant>(
+  element: DescendantType["element"],
+  immutable: DescendantType[],
+): number {
+  return immutable.findIndex(desc => {
+    if (!desc.element || !element) {
+      return false;
+    }
+
+    // we want to insert the element in the order that it appears in the document
+    return Boolean(
+      element.compareDocumentPosition(desc.element) &
+        Node.DOCUMENT_POSITION_FOLLOWING,
+    );
+  });
+}
+
+function usePrevious<ValueType = any>(value: ValueType) {
+  const ref = React.useRef<ValueType | null>(null);
+  React.useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+
+function useForceUpdate() {
+  let [, dispatch] = React.useState<{}>(Object.create(null));
+  return React.useCallback(() => {
+    dispatch(Object.create(null));
+  }, []);
+}
