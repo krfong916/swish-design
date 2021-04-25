@@ -69,3 +69,10 @@ As for the getter, let's address how it will be used. We can provide the list of
 
 - [Reach UI](https://github.com/reach/reach-ui/blob/1449650359c119c1afe25973aa7584e09e2c88bc/packages/descendants/src/index.tsx#L224)
 - [Chakra UI](https://github.com/chakra-ui/chakra-ui/blob/d1a21ed1a4ec37ca9aee44f2db347ca44f092578/packages/descendant/src/use-descendant.ts#L69)
+
+## Notes
+
+- forceUpdate():
+  - We force update because we don't have reference to the real DOM on the process of first render.
+    When useDescendant is invoked, the React engine hasn't rendered the actual DOM elements,
+    so we have to force update because - the reconciler will be able to diff what's change in the tree (which is nothing) and in that process we'll invoke useDescendants again, and that second time around, we'll have the ref.

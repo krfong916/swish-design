@@ -1,164 +1,69 @@
+/**
+ TODO:
+    -[ ] remove placeholder when there's a current focus
+    -[ ] have to throw error if they don't specify managestyles with classes
+    -[ ] have to throw error if they render a pin input outside of a
+    -[ ] allow the clear prop - clear all values and focus on the first input
+    -[ ] mask
+
+    -[ ] is invalid state w/focus on all from props
+    -[ ] default to disabled state
+    -[ ] allow default value and partial values
+    -[ ] allow copy paste
+    
+    -[x] standardize naming convention for styles
+    -[x] styling
+    -[x] size
+    -[x] variant: "outline" | "unstyled" | "filled" | "flushed"
+    -[x] separate hooks from styling etc. so ppl can have the functionality, and style however they like
+    -[x] forwardRef
+    -[x] previous tab/focus should not delete a character, only keep the highlight
+ */
 import * as React from "react";
 import {
-  DescendantProvider,
-  useDescendants,
-  useDescendant,
-  Descendant,
-  getDescendants,
-  createDescendantContext,
-} from "../utils/descendants/index";
-import { createNamedContext } from "../utils/createNamedContext";
+  usePinInput,
+  usePinField,
+  PinProps,
+  PinContextProvider,
+  PinContext,
+  PinFieldProps,
+  PinContextProviderProps,
+} from "./usePinInput";
 import classNames from "classnames";
 import "./styles/pinInput.scss";
 
-export type PinInputDescendant = Descendant & {
-  focusable: boolean;
-  disabled: boolean;
-};
-
-const PinDescendantContext = createDescendantContext<PinInputDescendant>(
-  "PinDescendantContext",
-);
-
-const PinContext = createNamedContext<PinInternalContext>(
-  "PinContext",
-  {} as PinInternalContext,
-);
-
-export type PinType = "numeric" | "alphanumeric";
-export type PinColor = "blue" | "green" | "purple";
-export type PinErrorColor = "red" | "orange" | "yellow";
-
-interface PinInternalContext {
-  getPinProps: (index: number) => {};
-}
-
-export interface PinProps {
-  type: PinType;
-  children?: React.ReactElement[];
-  onCompleted?: (e: any) => void;
-  autoFocus?: boolean;
-}
-
+/**
+ * PinInput is the top-level component for the Pin Component
+ *
+ * @param  PinProps User-specified properties to control the behavior and appearance
+ * @return Pin      Swish Component
+ */
 export const PinInput = (props: PinProps) => {
-  const { type = "alphanumeric", children, autoFocus = true } = props;
-  const [descendants, setDescendants] = useDescendants<PinInputDescendant>();
-  const [pinValues, setPinValues] = React.useState<string[]>([]);
+  const { children, ...rest } = props;
+  const context = usePinInput(rest);
 
-  React.useEffect(() => {
-    const firstPin = descendants[0];
-    if (firstPin && autoFocus) {
-      firstPin.element.focus();
-    }
-    // only place focus when descendants change
-  }, [descendants]);
-
-  /**
-   WIP: onkeydown for backspace, and onChange
-
-   The tale of three conditions:
-
-   1: Pin code is complete -> call on complete (delegated to useEffect)
-
-   2: User input is a backspace and a value already exists in input field -> keep focus, update state
-
-   3: User input is a backspace and a value DOESNT exist in the input field -> move focus
-
-   4. User input is valid -> move focus
-   */
-  const onChange = (index: number) => (
-    e?: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const currentPinValue = pinValues[index];
-    const nextPinValue = e.currentTarget.value;
-
-    if (nextPinValue === "" && !currentPinValue.charAt(0)) {
-      const nextPinToRecieveFocus = descendants[index - 1];
-      // check if backspace on first pin: array out of bounds exc.
-      if (nextPinToRecieveFocus) {
-        nextPinToRecieveFocus.element.focus();
-      }
-    }
-
-    if (validate(type, nextPinValue) || nextPinValue === "") {
-      // set the new pin value
-      const newPinValues = [...pinValues];
-      newPinValues[index] = nextPinValue;
-      setPinValues(newPinValues);
-    }
-  };
-
-  React.useEffect(() => {
-    const values = pinValues.join("");
-    if (values.length == descendants.length && values.length != 0) {
-    }
-  }, [pinValues]);
-
-  const getPinProps = React.useCallback(
-    (index: number) => {
-      return {
-        onChange: onChange(index),
-        value: pinValues[index] || "",
-      };
-    },
-    [onChange, pinValues],
-  );
-
-  const context = {
-    getPinProps,
-  } as PinInternalContext;
-
-  return (
-    <DescendantProvider
-      setDescendants={setDescendants}
-      descendants={descendants}
-      context={PinDescendantContext}
-    >
-      <PinContext.Provider value={context}>{children}</PinContext.Provider>
-    </DescendantProvider>
-  );
+  // combine contexts here, the user doesn't need to know of descendants
+  // all they need to know is the provider
+  return <PinContextProvider context={context}>{children}</PinContextProvider>;
 };
-
-export interface PinFieldProps {}
 
 /**
- * @desc PinField is an input element that accepts a single character
- * It is used its parent <PinInput/> to create a Pin number
- * We use forwardRef because if we passed a ref to PinField,
- * the parent component would have reference to the PinField and not the DOM node itself
- * Note: type parameters have the opposite ordering
+ * A child of the Pin component that accepts a single character
+ * Collectively, the PinField is used to create a Pin code
+ *
+ * @return PinField Swish Component
  */
-export function PinField() {
-  const ownRef = React.useRef<HTMLInputElement | null>();
-  const { getPinProps } = React.useContext(PinContext);
+export const PinField = React.forwardRef<
+  React.MutableRefObject<any | null>,
+  PinFieldProps
+>((props, userRef) => {
+  const { manageStyle, classes } = props;
 
-  const index = useDescendant(
-    {
-      element: ownRef.current,
-      focusable: true,
-      disabled: false,
-    },
-    PinDescendantContext,
-  );
+  const { pinClasses, ...pinFieldProps } = usePinField(props, userRef);
 
-  return (
-    <div className="pin-input-field">
-      <input
-        className="s-pin-input-field"
-        ref={ownRef}
-        {...getPinProps(index)}
-      />
-    </div>
-  );
-}
+  const pinFieldStyles = manageStyle
+    ? classNames([pinClasses, classes])
+    : classNames("s-pin-base", "s-pin-field", [pinClasses]);
 
-function validate(type: PinType, value: string): boolean {
-  const numbersOnly: boolean = type === "numeric" ? true : false;
-  const letterOrNumber = /[(0-9) | (a-z) | (A-Z)]/g;
-  const letter = /[(a-z) | (A-Z)]/g;
-
-  if (!value.match(letterOrNumber)) return false;
-  if (numbersOnly && value.match(letter)) return false;
-  // the value is not a special character & is alphanum || strictly alpha
-  return true;
-}
+  return <input className={pinFieldStyles} {...pinFieldProps} />;
+});

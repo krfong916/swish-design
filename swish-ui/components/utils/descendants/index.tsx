@@ -25,7 +25,7 @@ A descendant is of some element type - we don't know exactly what
 
 @type {Descendant} the base descendant type
 */
-export type Descendant<ElementType = HTMLElement> = {
+type Descendant<ElementType = HTMLElement> = {
   element: SomeElement<ElementType>;
 };
 
@@ -145,7 +145,7 @@ export function useDescendant<DescendantType extends Descendant>(
 ) {
   const { subscribe, unsubscribe, descendants } = React.useContext(context);
   const forceUpdate = useForceUpdate();
-  const index = descendants.findIndex(
+  const index = descendants?.findIndex(
     desc => desc.element === descendant.element,
   );
 
@@ -247,3 +247,5 @@ function useForceUpdate() {
     dispatch(Object.create(null));
   }, []);
 }
+
+export type { Descendant };

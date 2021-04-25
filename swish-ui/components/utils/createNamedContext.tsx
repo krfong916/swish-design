@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import * as types from "react";
+import type * as React from "react";
 
 export function createNamedContext<ContextValueType>(
   name: string,
