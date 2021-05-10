@@ -43,7 +43,7 @@ const noop = () => {};
 
 // name the context that we are creating
 export function createDescendantContext<DescendantType extends Descendant>(
-  name: string,
+  name: string
 ) {
   const descendants: DescendantType[] = [];
   const contextValue = {
