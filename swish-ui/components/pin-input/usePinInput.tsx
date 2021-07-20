@@ -187,6 +187,7 @@ export function usePinInput(props: PinProps) {
    */
   const setPinValue = React.useCallback(
     (inputValue: string, index: number) => {
+      inputValue = inputValue.toUpperCase();
       let newPinValues = pinValues.length
         ? [...pinValues]
         : new Array(descendants.length).fill("");
@@ -210,7 +211,6 @@ export function usePinInput(props: PinProps) {
       if (isComplete) {
         onComplete?.(newPinValues.join(""), clear);
       }
-
       setPinValues(newPinValues);
     },
     [pinValues, setPinValues, onComplete, descendants],
@@ -225,6 +225,7 @@ export function usePinInput(props: PinProps) {
   const moveFocus = React.useCallback(
     (index: number) => {
       if (focusedIndex != index) {
+        if (index == -1) index = 0; // keep index in bounds
         setFocusedIndex(index);
       }
     },
@@ -286,8 +287,12 @@ export function usePinInput(props: PinProps) {
         const previousPin = descendants[index - 1];
         if (userKey === BACKSPACE || userKey === DEL) {
           if (!currentPinValue) {
-            setPinValue("", index - 1); // clear the character in the previous cell
-            moveFocus(index - 1);
+            if (index - 1 >= 0) {
+              moveFocus(index - 1);
+              setPinValue("", index - 1); // clear the character in the previous cell
+            } else {
+              setPinValue("", index); // we're at the beginning cell, don't move focus, just delete the character
+            }
           } else {
             setPinValue("", index); // a value in the cell already exists
           }
@@ -298,8 +303,12 @@ export function usePinInput(props: PinProps) {
           } else {
             moveFocus(index + 1);
           }
-        } else if (validate(inputType, e.key)) {
-          // the user entered the same value that exists within the cell
+        } else if (validate(inputType, e.key) && currentPinValue == e.key) {
+          // the user entered the same letter/number that already exists within the currently focused cell
+          moveFocus(index + 1);
+        } else if (validate(inputType, e.key) && currentPinValue != "") {
+          // the user entered the a new letter/number in the currently focused cell
+          setPinValue("", index);
           moveFocus(index + 1);
         }
       };
@@ -331,7 +340,7 @@ export function usePinInput(props: PinProps) {
         e: React.ClipboardEvent<HTMLInputElement>,
       ) => {
         let pasteValue = e.clipboardData.getData("text");
-        if (validate(inputType, pasteValue)) {
+        if (validatePaste(inputType, pasteValue)) {
           setPinValue(pasteValue, index);
           let spliceLen = index + pasteValue.length;
           let nextFocusIndex =
@@ -373,14 +382,29 @@ export function usePinInput(props: PinProps) {
 
 const toArray = (value?: string) => value?.split("");
 function validate(type: PinType, value: string): boolean {
-  const numbersOnly: boolean = type === "number" ? true : false;
-  const letterOrNumber = /[(0-9) | (a-z) | (A-Z)]/g;
-  const letter = /[(a-z) | (A-Z)]/g;
+  const letterOrNumber = /^[0-9a-z)]/i; // assert the position at the beginning of the string - ^, case-insensite /i
+  switch (type) {
+    case "number":
+      if (value.length === 1 && parseInt(value)) return true;
+    case "text":
+      if (value.length === 1 && value.match(letterOrNumber)) return true;
+    default:
+      break;
+  }
+  return false;
+}
 
-  if (!value.match(letterOrNumber)) return false;
-  if (numbersOnly && value.match(letter)) return false;
-  // the value is not a special character & is alphanum || strictly alpha
-  return true;
+function validatePaste(type: PinType, value: string): boolean {
+  const letterOrNumber = /^[0-9a-zA-Z)]+$/; // between one and n-many times - +, assert position at the nd of the string - $
+  switch (type) {
+    case "number":
+      if (parseInt(value)) return true;
+    case "text":
+      if (value.match(letterOrNumber)) return true;
+    default:
+      break;
+  }
+  return false;
 }
 
 export interface PinFieldProps {

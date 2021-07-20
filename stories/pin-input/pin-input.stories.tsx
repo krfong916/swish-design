@@ -10,8 +10,6 @@ export default {
   },
 };
 
-const initialPin = "123";
-
 export const PinInput = () => {
   return (
     <div className="pin-container-preset">
@@ -30,7 +28,7 @@ export const PinInput = () => {
 export const PinWithCustomStyling = () => {
   return (
     <div className="pin-container-custom">
-      <Pin inputType="number" manageStyle={true} placeholder="">
+      <Pin inputType="text" manageStyle={true} placeholder="">
         <PinField manageStyle={true} classes={"s-pin-split"} />
         <PinField manageStyle={true} classes={"s-pin-split"} />
         <PinField manageStyle={true} classes={"s-pin-split"} />
@@ -93,6 +91,7 @@ export const PinInputAvailablePresets = () => {
 };
 
 export const PinInputWithControlProps = () => {
+  const initialPin = "123";
   const [pinCode, setPinCode] = React.useState(initialPin);
   const [isError, setIsError] = React.useState(false);
 
