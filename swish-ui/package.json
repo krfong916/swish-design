@@ -4,9 +4,7 @@
   "description": "An enterprise-ready and accessible UI design library of React components",
   "version": "0.1.1",
   "license": "MIT",
-  "main": "lib/index.js",
-  "style": "lib/main.css",
-  "types": "lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "author": "Swish Design Team",
   "files": [
     "lib"

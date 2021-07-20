@@ -16,5 +16,6 @@
   },
   "compileOnSave": true,
   "include": ["swish-ui/components/**/*", "stories/**/*"],
-  "exclude": ["node_modules", "swish-ui/node_modules"]
+  "exclude": ["node_modules", "swish-ui/node_modules"],
+  "files": ["./swish-ui/lib/index.d.ts"]
 }

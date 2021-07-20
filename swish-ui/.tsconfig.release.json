@@ -16,5 +16,6 @@
   },
   "compileOnSave": true,
   "include": ["components"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "files": ["./lib/index.d.ts"]
 }

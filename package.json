@@ -14,7 +14,7 @@
     "ui"
   ],
   "files": [
-    "swish-ui/lib"
+    "swish-ui/"
   ],
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
     "url": "https://github.com/swish-components/issues"
   },
   "homepage": "https://github.com/swish-components",
-  "main": "build/lib/index.js",
+  "types": "./swish-ui/lib/index.d.ts",
   "scripts": {
     "start": "start-storybook --quiet -p 6006 -c .storybook",
     "storybook": "start-storybook -p 6006",
