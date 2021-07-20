@@ -10,7 +10,7 @@ export default {
   },
 };
 
-const initialPin = "";
+const initialPin = "123";
 
 export const PinInput = () => {
   return (

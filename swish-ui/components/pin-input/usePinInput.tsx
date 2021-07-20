@@ -9,7 +9,10 @@ import {
 } from "../utils/descendants/index";
 import { createNamedContext } from "../utils/createNamedContext";
 import { mergeRefs } from "../utils/refs";
-import { useControllableState } from "../utils/hooks";
+import {
+  useControllableState,
+  useControllableStateProps,
+} from "../utils/hooks";
 import classNames from "classnames";
 
 export interface PinProps {
@@ -159,10 +162,10 @@ export function usePinInput(props: PinProps) {
   } = props;
 
   const [descendants, setDescendants] = useDescendants<PinInputDescendant>();
-  const [pinValues, setPinValues] = useControllableState<string[]>({
-    defaultValue: toArray(defaultValue),
-    value: toArray(value),
-    onChange: pinValues => onChange?.(pinValues.join("")),
+  const [pinValues, setPinValues] = useControllableState({
+    defaultValue: toArray(defaultValue) as string[],
+    value: toArray(value) as string[],
+    onChange: (pinValues: string[]) => onChange?.(pinValues.join("")),
   });
 
   const [focusedIndex, setFocusedIndex] = React.useState(-1);
