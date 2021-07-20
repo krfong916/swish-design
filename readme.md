@@ -7,7 +7,6 @@
 [![Build Status][build-badge]][build]
 [![Coverage Status][coverage-badge]][coverage]
 [![NPM Info][npm-info-badge]][npm-info]
-[![HitCount][hit-count-badge]][hit-count]
 
 
 ## 📦 Install
