@@ -1,3 +1,15 @@
+# v0.2.13 (Tue Jul 20 2021)
+
+#### ⚠️ Pushed to `main`
+
+- Update readme.md ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.12 (Tue Jul 20 2021)
 
 #### 🐛 Bug Fix
