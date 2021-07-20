@@ -12,10 +12,10 @@
     "suppressImplicitAnyIndexErrors": true,
     "declaration": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "declarationDir": "./types"
   },
   "compileOnSave": true,
   "include": ["components"],
-  "exclude": ["node_modules"],
-  "files": ["./lib/index.d.ts"]
+  "exclude": ["node_modules"]
 }
