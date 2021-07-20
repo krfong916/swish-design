@@ -1,3 +1,15 @@
+# v0.2.12 (Tue Jul 20 2021)
+
+#### 🐛 Bug Fix
+
+- Pin input [#22](https://github.com/krfong916/swish-design/pull/22) ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.11 (Sun Mar 21 2021)
 
 #### ⚠️ Pushed to `main`
