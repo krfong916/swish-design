@@ -3,7 +3,7 @@ const webpack = require("webpack");
 const MiniCSSExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: "./index.ts",
-  devtool: "source-map",
+  devtool: "eval",
   module: {
     rules: [
       {
