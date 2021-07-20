@@ -91,7 +91,7 @@ export const PinInputAvailablePresets = () => {
 };
 
 export const PinInputWithControlProps = () => {
-  const initialPin = "123";
+  const initialPin = "";
   const [pinCode, setPinCode] = React.useState(initialPin);
   const [isError, setIsError] = React.useState(false);
 
