@@ -25,7 +25,7 @@
     "url": "https://github.com/swish-components/issues"
   },
   "homepage": "https://github.com/swish-components",
-  "types": "./build/lib/swish-ui/index.d.ts",
+  "types": "./swish-ui/lib/index.d.ts",
   "scripts": {
     "start": "start-storybook --quiet -p 6006 -c .storybook",
     "storybook": "start-storybook -p 6006",

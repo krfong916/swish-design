@@ -12,10 +12,11 @@
     "suppressImplicitAnyIndexErrors": true,
     "declaration": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "declarationDir": "./swish-ui/lib"
   },
   "compileOnSave": true,
   "include": ["swish-ui/components/**/*", "stories/**/*"],
   "exclude": ["node_modules", "swish-ui/node_modules"],
-  "files": ["./build/lib/swish-ui/index.d.ts"]
+  "files": ["./swish-ui/lib/index.d.ts"]
 }
