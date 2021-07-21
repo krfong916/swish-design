@@ -2,7 +2,7 @@
   Swish Design 🏀
 </h1>
 <hr />
-<p align="center" style="font-size: 1.2rem;">A simple, customizable design package that has three design goals: WAI-ARIA compliance, performance, and cross-device/platform support.</p>
+<p align="center" style="font-size: 1.2rem;">A simple, customizable design package that has three design goals: WAI-ARIA compliance, performance, and cross-device/platform support. The contents of this repo is **experimental** and may not suit your production needs, use at your own discretion</p>
 
 [![Build Status][build-badge]][build]
 [![Coverage Status][coverage-badge]][coverage]
@@ -36,6 +36,13 @@ ReactDOM.render(
 )
 ```
 
+Additionally, you will need to create your own typings file. Pain in the ass, we know. We are submitting our typings to [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped), once approved you will be able to import the typing package in your project using `npm i -D @types/swish-design` or in yarn `yarn add @types/swish-design`. Using a one-line command  will reduce your workload and improve your experience, as opposed to having to create your own typings file of the components you use in your project.
+
+For now, you'll find type definitions located under `node_modules/swish-design/lib/index.d.ts`.
+- Create a folder under the directory path `node_modules/@types` and name it `swish-design`.
+- Create a file named `index.d.ts`
+- Copy and paste all type definitions from the located in Swish Design package `node_modules/swish-design/lib/index.d.ts` to the type definitions file you just created under `node_modules/@types/swish-design/index.d.ts`
+
 ### Content-Security-Policy
 
 Some may be using this package with a strict Content-Security-Policy. Meaning, they cannot allow inline style tags to be injected into their document at runtime.
@@ -65,7 +72,7 @@ import "swishd.css";
 | Component      | Status |
 | -------------- | ------ |
 | Button         | ✅     |
-| Input          | 🛠️     |
+| Input          | ✅     |
 | Tags           | 🛠️     |
 | Avatar         | 🛠️     |
 | Card           | 📘     |
