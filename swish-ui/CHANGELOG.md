@@ -1,3 +1,18 @@
+# v0.2.14 (Wed Jul 21 2021)
+
+#### ⚠️ Pushed to `main`
+
+- add top-level types folder for publishing types to definetlyTyped ([@krfong916](https://github.com/krfong916))
+- add git config for runner to publish types to definetlytyped ([@krfong916](https://github.com/krfong916))
+- submit typescript definitions for package{ ([@krfong916](https://github.com/krfong916))
+- submit typescript definitions for package ([@krfong916](https://github.com/krfong916))
+
+#### Authors: 1
+
+- Kyle Fong ([@krfong916](https://github.com/krfong916))
+
+---
+
 # v0.2.13 (Tue Jul 20 2021)
 
 #### ⚠️ Pushed to `main`
