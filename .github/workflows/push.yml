@@ -39,7 +39,7 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           git config --global user.email "krfong@ucsc.edu"
-          git config --global user.name "icalledyoulastsunday"
+          git config --global user.name "krfong916"
           yarn install --frozen-lockfile
           yarn build
           yarn release

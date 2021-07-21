@@ -12,8 +12,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "declaration": true,
     "strict": true,
-    "allowSyntheticDefaultImports": true,
-    "declarationDir": "./types"
+    "allowSyntheticDefaultImports": true
   },
   "compileOnSave": true,
   "include": ["components"],
