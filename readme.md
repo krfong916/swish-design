@@ -2,7 +2,7 @@
   Swish Design 🏀
 </h1>
 <hr />
-<p align="center" style="font-size: 1.2rem;">A simple, customizable design package that has three design goals: WAI-ARIA compliance, performance, and cross-device/platform support. The contents of this repo is **experimental** and may not suit your production needs, use at your own discretion</p>
+<p align="center" style="font-size: 1.2rem;">A simple, customizable design package that has three design goals: WAI-ARIA compliance, performance, and cross-device/platform support. The contents of this repo is <strong>experimental</strong> and may not suit your production needs, use at your own discretion</p>
 
 [![Build Status][build-badge]][build]
 [![Coverage Status][coverage-badge]][coverage]
